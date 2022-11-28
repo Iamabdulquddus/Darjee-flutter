@@ -99,7 +99,7 @@ class MyTextStyles {
     fontWeight: FontWeight.bold,
   );
 
-  static TextStyle headingLargePrimary = TextStyle(
+  static TextStyle  headingLargePrimary = TextStyle(
     fontSize: 20,
     color: primary,
     fontWeight: FontWeight.bold,

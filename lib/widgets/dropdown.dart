@@ -2,7 +2,7 @@ import 'package:darjee_flutter/constants/style.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
-import '../../../responsive.dart';
+import '../responsive.dart';
 
 class CustomDropdown extends StatefulWidget {
   const CustomDropdown(
@@ -111,7 +111,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
               },
               buttonHeight: 40,
               buttonWidth: Responsive.isDesktop(context)
-                  ? size.width / 3.5
+                  ? size.width / 4
                   : size.width / 2,
               dropdownMaxHeight: 150,
               buttonPadding: const EdgeInsets.only(left: 14, right: 14),

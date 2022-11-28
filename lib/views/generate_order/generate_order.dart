@@ -7,7 +7,7 @@ import '../../constants/images.dart';
 import '../../constants/style.dart';
 import '../../responsive.dart';
 import '../content.dart';
-import 'components/dropdown.dart';
+import '../../widgets/dropdown.dart';
 
 class GenerateOrder extends StatelessWidget {
   const GenerateOrder({Key? key}) : super(key: key);

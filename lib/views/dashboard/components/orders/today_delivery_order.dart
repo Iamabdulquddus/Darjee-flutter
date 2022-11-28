@@ -3,9 +3,6 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import '../../../../constants/style.dart';
-import '../../../../responsive.dart';
-
 
 final List<Map<String, dynamic>> _data = List.generate(100, (index) => {
   "id" :index,

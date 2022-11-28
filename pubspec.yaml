@@ -16,10 +16,12 @@ dependencies:
   get: ^4.6.5
   http: ^0.13.5
   hive: ^2.2.3
+  intl: ^0.17.0
   hive_flutter: ^1.1.0
   dropdown_button2: ^1.7.2
   responsive_table: ^0.2.0+2
   data_table_2: ^2.3.7
+  image_picker: ^0.8.6
 
 
 dev_dependencies:
