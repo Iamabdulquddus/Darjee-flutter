@@ -1,92 +1,209 @@
 import 'dart:math';
-import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
+import 'package:responsive_table/responsive_table.dart';
 import '../../../constants/style.dart';
 
+class AddCustomerList extends StatefulWidget {
+  const AddCustomerList({Key? key}) : super(key: key);
+  @override
+  State<AddCustomerList> createState() => _AddCustomerListState();
+}
 
-final List<Map<String, dynamic>> _data = List.generate(100, (index) => {
-  "id" :index,
-  "order_id": Random().nextInt(1000),
-  "title" : "Customer $index",
-  "order_type" : "Stitching",
-  "Bill" : Random().nextInt(5000),
-  "delivery_date" : TimeOfDay,
-  "action" : 'different actions',
+class _AddCustomerListState extends State<AddCustomerList> {
+  late List<DatatableHeader> _headers;
 
-});
-var map = [
-  {
-    'value1':"value data1",
-    'value2':"value data",
-    'value3':"value data",
-    'value4':"value data",
-    'value5':"value data",
-    'value6':"value data",
+  final List<int> _perPages = [10, 20, 50, 100];
+  int _total = 100;
+  int? _currentPerPage = 10;
+  List<bool>? _expanded;
+  final String _searchKey = "id";
 
-  },
-  {
-    'value1':"value data2",
-    'value2':"value data",
-    'value3':"value data",
-    'value4':"value data",
-    'value5':"value data",
-    'value6':"value data",
-  },
-  {
-    'value1':"value data3",
-    'value2':"value data",
-    'value3':"value data",
-    'value4':"value data",
-    'value5':"value data",
-    'value6':"value data",
+  int _currentPage = 1;
+  bool _isSearch = false;
+  final List<Map<String, dynamic>> _sourceOriginal = [];
+  List<Map<String, dynamic>> _sourceFiltered = [];
+  List<Map<String, dynamic>> _source = [];
+  final List<Map<String, dynamic>> _selecteds = [];
+  // ignore: unused_field
+  final String _selectableKey = "id";
 
-  },
-  {
-    'value1':"value data4",
-    'value2':"value data",
-    'value3':"value data",
-    'value4':"value data",
-    'value5':"value data",
-    'value6':"value data",
+  String? _sortColumn;
+  final bool _sortAscending = true;
+  bool _isLoading = true;
+  final bool _showSelect = false;
+  var random = Random();
 
-  },
-  {
-    'value1':"value data5",
-    'value2':"value data",
-    'value3':"value data",
-    'value4':"value data",
-    'value5':"value data",
-    'value6':"value data",
+  List<Map<String, dynamic>> _generateData({int n = 100}) {
+    final List source = List.filled(n, Random.secure());
+    List<Map<String, dynamic>> temps = [];
+    var i = 1;
+    print(i);
+    // ignore: unused_local_variable
+    for (var data in source) {
+      temps.add({
+        "id": i,
+        "name": "Customer Name $i",
+        "pic": " ",
+        "reg": i * 10.00,
+        "mobile": i * 10.00,
+        "details": "${i}0.20",
+        "actions": [i , 5]
+      });
+      i++;
+    }
+    return temps;
+  }
 
-  },
-  {
-    'value1':"value data6",
-    'value2':"value data",
-    'value3':"value data",
-    'value4':"value data",
-    'value5':"value data",
-    'value6':"value data",
+  _initializeData() async {
+    _mockPullData();
+  }
 
-  },
-];
+  _mockPullData() async {
+    _expanded = List.generate(_currentPerPage!, (index) => false);
 
-class AddCustomerList extends StatelessWidget {
-  const AddCustomerList({super.key});
+    setState(() => _isLoading = true);
+    Future.delayed(const Duration(seconds: 3)).then((value) {
+      _sourceOriginal.clear();
+      _sourceOriginal.addAll(_generateData(n: random.nextInt(10000)));
+      _sourceFiltered = _sourceOriginal;
+      _total = _sourceFiltered.length;
+      _source = _sourceFiltered.getRange(0, _currentPerPage!).toList();
+      setState(() => _isLoading = false);
+    });
+  }
+
+  _resetData({start: 0}) async {
+    setState(() => _isLoading = true);
+    var expandedLen =
+        _total - start < _currentPerPage! ? _total - start : _currentPerPage;
+    Future.delayed(const Duration(seconds: 0)).then((value) {
+      _expanded = List.generate(expandedLen as int, (index) => false);
+      _source.clear();
+      _source = _sourceFiltered.getRange(start, start + expandedLen).toList();
+      setState(() => _isLoading = false);
+    });
+  }
+
+  _filterData(value) {
+    setState(() => _isLoading = true);
+
+    try {
+      if (value == "" || value == null) {
+        _sourceFiltered = _sourceOriginal;
+      } else {
+        _sourceFiltered = _sourceOriginal
+            .where((data) => data[_searchKey]
+                .toString()
+                .toLowerCase()
+                .contains(value.toString().toLowerCase()))
+            .toList();
+      }
+
+      _total = _sourceFiltered.length;
+      var rangeTop = _total < _currentPerPage! ? _total : _currentPerPage!;
+      _expanded = List.generate(rangeTop, (index) => false);
+      _source = _sourceFiltered.getRange(0, rangeTop).toList();
+    } catch (e) {
+      print(e);
+    }
+    setState(() => _isLoading = false);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    /// set headers
+    _headers = [
+      DatatableHeader(
+          text: "S.No",
+          value: "id",
+          show: true,
+          sortable: true,
+          textAlign: TextAlign.start),
+      DatatableHeader(
+          text: "Customer Name",
+          value: "name",
+          show: true,
+          flex: 2,
+          sortable: true,
+          editable: true,
+          textAlign: TextAlign.left),
+      DatatableHeader(
+          text: "Picture",
+          value: "pic",
+          show: true,
+          sortable: false,
+          sourceBuilder: (value, row) {
+            return Container(
+              padding: EdgeInsets.all(5),
+              height: 50,
+              width: 50,
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/images/islamabad.jpg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          },
+          textAlign: TextAlign.center),
+      DatatableHeader(
+          text: "Registration Date",
+          value: "reg",
+          show: true,
+          sortable: true,
+          textAlign: TextAlign.left),
+      DatatableHeader(
+          text: "Mobile",
+          value: "mobile",
+          show: true,
+          sortable: true,
+          textAlign: TextAlign.left),
+      DatatableHeader(
+          text: "Details",
+          value: "details",
+          show: true,
+          sortable: true,
+          textAlign: TextAlign.left),
+      DatatableHeader(
+          text: "Actions",
+          value: "actions",
+          show: true,
+          sortable: false,
+          sourceBuilder: (value, row) {
+            List list = List.from(value);
+            // List list =  List();
+
+            for(var i = 0; i < value.length; i++){
+              list.add(ElevatedButton(
+
+                  child: Text("button $i"),
+                  onPressed: () {  },
+              ),);
+            }
+
+            return Wrap(
+              children: list,
+            );
+          },
+          textAlign: TextAlign.center),
+    ];
+
+    _initializeData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return Container(
-        decoration: BoxDecoration(
-        border: Border.all(width: 1, color: secondary),
-    borderRadius: BorderRadius.circular(10),
-    ),
-    child: Column(
+    return Column(
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10 ,vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           decoration: const BoxDecoration(
             color: secondary,
             borderRadius: BorderRadius.only(
@@ -97,7 +214,7 @@ class AddCustomerList extends StatelessWidget {
           child: Row(
             children: [
               const Icon(
-                Icons.menu,
+                Icons.person,
                 color: Colors.black,
               ),
               Text(
@@ -107,69 +224,125 @@ class AddCustomerList extends StatelessWidget {
             ],
           ),
         ),
-
         SizedBox(
-          height: 400,
-          child: DataTable2(
-            columnSpacing: 20,
-            horizontalMargin: 12,
-            minWidth: 500 ,
-            columns: [
-              DataColumn2(
-                  size: ColumnSize.S,
-                  label: Text(
-                    'S.NO',
-                    overflow: TextOverflow.visible,
+          height: 600,
+          child: Card(
+            elevation: 1,
+            shadowColor: Colors.black,
+            clipBehavior: Clip.none,
+            child: ResponsiveDatatable(
+              reponseScreenSizes: const [ScreenSize.xs],
+              actions: [
+                if (_isSearch)
+                  Expanded(
+                      child: TextField(
+                    decoration: InputDecoration(
+                        hintText:
+                            'Enter search term based on ${_searchKey.replaceAll(RegExp('[\\W_]+'), ' ').toUpperCase()}',
+                        prefixIcon: IconButton(
+                            icon: const Icon(Icons.cancel),
+                            onPressed: () {
+                              setState(() {
+                                _isSearch = false;
+                              });
+                              _initializeData();
+                            }),
+                        suffixIcon: IconButton(
+                            icon: const Icon(Icons.search), onPressed: () {})),
+                    onSubmitted: (value) {
+                      _filterData(value);
+                    },
                   )),
-              DataColumn2(
-                  size: ColumnSize.M,
-                  label: Text(
-                    'Customer Name',
-                    overflow: TextOverflow.visible,
-                  )),
-              DataColumn2(
-                  size: ColumnSize.S,
-                  label: Text(
-                    'Reg. Date',
-                    overflow: TextOverflow.visible,
-                  )),
-              DataColumn2(
-                  size: ColumnSize.S,
-                  label: Text(
-                    'Mobile',
-                    overflow: TextOverflow.visible,
-                  )),
-              DataColumn2(
-                  size: ColumnSize.S,
-                  label: Text(
-                    'Details',
-                    overflow: TextOverflow.visible,
+                if (!_isSearch)
+                  TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _isSearch = true;
+                        });
+                      },
+                      child: Row(
+                        children: [
+                          Icon(Icons.search),
+                          Text(' Search'),
+                        ],
+                      ))
+              ],
+              headers: _headers,
+              source: _source,
+              selecteds: _selecteds,
+              showSelect: _showSelect,
+              autoHeight: false,
+              expanded: _expanded,
+              sortAscending: _sortAscending,
+              // sortColumn: _sortColumn,
+              isLoading: _isLoading,
+              footers: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: const Text("Rows per page:"),
+                ),
+                if (_perPages.isNotEmpty)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: DropdownButton<int>(
+                      value: _currentPerPage,
+                      items: _perPages
+                          .map((e) => DropdownMenuItem<int>(
+                                child: Text("$e"),
+                                value: e,
+                              ))
+                          .toList(),
+                      onChanged: (dynamic value) {
+                        setState(() {
+                          _currentPerPage = value;
+                          _currentPage = 1;
+                          _resetData();
+                        });
+                      },
+                      isExpanded: false,
+                    ),
                   ),
-              ),
-              DataColumn2(
-                  size: ColumnSize.S,
-                  label: Text(
-                    'Actions',
-                    overflow: TextOverflow.visible,
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Text("$_currentPage - $_currentPerPage of $_total"),
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
+                    size: 16,
                   ),
-              ),
-            ],
-            rows: List<DataRow>.generate(
-              map.length,
-                  (index) => DataRow(
-                cells: [
-                  DataCell(Text("${map[index]['value1'] }")),
-                  DataCell(Text("${map[index]['value2'] }")),
-                  DataCell(Text("${map[index]['value3'] }")),
-                  DataCell(Text("${map[index]['value4'] }")),
-                  DataCell(Text("${map[index]['value4'] }")),
-                  DataCell(Text("${map[index]['value6'] }"))
-                ],
-              ),
+                  onPressed: _currentPage == 1
+                      ? null
+                      : () {
+                          var nextSet = _currentPage - _currentPerPage!;
+                          setState(() {
+                            _currentPage = nextSet > 1 ? nextSet : 1;
+                            _resetData(start: _currentPage - 1);
+                          });
+                        },
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.arrow_forward_ios, size: 16),
+                  onPressed: _currentPage + _currentPerPage! - 1 > _total
+                      ? null
+                      : () {
+                          var nextSet = _currentPage + _currentPerPage!;
+
+                          setState(() {
+                            _currentPage = nextSet < _total
+                                ? nextSet
+                                : _total - _currentPerPage!;
+                            _resetData(start: nextSet - 1);
+                          });
+                        },
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                )
+              ],
             ),
           ),
         ),
       ],
-    ),);
+    );
   }
 }
