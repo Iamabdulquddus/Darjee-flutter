@@ -9,10 +9,9 @@ class CustomDropdown extends StatefulWidget {
       {Key? key,
       required this.dropDownTitle,
       required this.dropDownItemList,
-      required this.title,
-      required this.dropdownButtonIcon})
+      required this.dropdownButtonIcon, })
       : super(key: key);
-  final String dropDownTitle, title;
+  final String dropDownTitle ;
   final List dropDownItemList;
   final IconData dropdownButtonIcon;
   @override
@@ -30,19 +29,11 @@ class _CustomDropdownState extends State<CustomDropdown> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.title,
-          style: MyTextStyles.headingxSmallBoldBlack,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
+
         Row(
           children: [
-            AnimatedContainer(
+            Container(
               decoration: const BoxDecoration(
-
-                  // color: lightColor,
                   boxShadow: [
                     BoxShadow(
                       color: secondary,
@@ -51,26 +42,15 @@ class _CustomDropdownState extends State<CustomDropdown> {
                       spreadRadius: 1,
                     ),
                     BoxShadow(
-                      color: Colors.white60,
+                      color: Colors.white38,
                       offset: Offset(-2, -2),
                       blurRadius: 5,
                       spreadRadius: 1,
                     ),
                   ]),
-              // padding: EdgeInsets.all(10),
-              duration: const Duration(seconds: 1),
-              child: IconButton(
-                color: iconColorChanged ? Colors.red : primary,
-                iconSize: 20,
-                onPressed: () {
-                  setState(() {
-                    iconColorChanged = !iconColorChanged;
-                  });
-                  //TODO: The navigation to dropdown side button
-                },
-                icon: Icon(
-                  widget.dropdownButtonIcon,
-                ),
+              child: Icon(
+                widget.dropdownButtonIcon,
+                color: primary,
               ),
             ),
             const SizedBox(

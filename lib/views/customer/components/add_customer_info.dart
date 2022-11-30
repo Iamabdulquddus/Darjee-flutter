@@ -14,7 +14,7 @@ class AddCustomerInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: Responsive.isDesktop(context)?600:970,
+      height: Responsive.isDesktop(context)?620:1000,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: secondary),
         borderRadius: BorderRadius.circular(10),
@@ -50,6 +50,7 @@ class AddCustomerInfo extends StatelessWidget {
               padding: const EdgeInsets.all(wDefaultPadding),
               color: lightColor,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Responsive.isDesktop(context)
@@ -121,7 +122,7 @@ class AddCustomerInfo extends StatelessWidget {
                                     labelText: 'Opening Balance',
                                   ),
                                   CustomDropdown(
-                                    title: '',
+
                                     dropdownButtonIcon: Icons.person,
                                     dropDownTitle: 'Select gender',
                                     dropDownItemList: ['male', 'female'],
@@ -186,7 +187,6 @@ class AddCustomerInfo extends StatelessWidget {
                                 labelText: 'Opening Balance',
                               ),
                               CustomDropdown(
-                                title: '',
                                 dropdownButtonIcon: Icons.person_add_alt,
                                 dropDownTitle: 'Select gender',
                                 dropDownItemList: const ['male', 'female'],
@@ -194,6 +194,7 @@ class AddCustomerInfo extends StatelessWidget {
                             ],
                           ),
                       ),
+                  Center(child: ElevatedButton(onPressed: (){}, child: Text('  Submit  ')),)
                 ],
               ),
             ),

@@ -1,15 +1,15 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:responsive_table/responsive_table.dart';
-import '../../../constants/style.dart';
+import '../../../../constants/style.dart';
 
-class AddCustomerList extends StatefulWidget {
-  const AddCustomerList({Key? key}) : super(key: key);
+class AllItemsWithMeasurementTitles extends StatefulWidget {
+  const AllItemsWithMeasurementTitles({Key? key}) : super(key: key);
   @override
-  State<AddCustomerList> createState() => _AddCustomerListState();
+  State<AllItemsWithMeasurementTitles> createState() => _AllItemsWithMeasurementTitlesState();
 }
 
-class _AddCustomerListState extends State<AddCustomerList> {
+class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementTitles> {
   late List<DatatableHeader> _headers;
 
   final List<int> _perPages = [10, 20, 50, 100];
@@ -42,12 +42,11 @@ class _AddCustomerListState extends State<AddCustomerList> {
     for (var data in source) {
       temps.add({
         "id": i,
-        "name": "Customer Name $i",
         "pic": " ",
-        "reg": i * 10.00,
-        "mobile": "03001234567" ,
-        "details": "${i}0.20",
-        "actions": [i, 5]
+        "name": "Customer Name $i",
+        "category": "Stitching",
+        "price": "${i * 20}" ,
+        "measurement": "",
       });
       i++;
     }
@@ -75,7 +74,7 @@ class _AddCustomerListState extends State<AddCustomerList> {
   _resetData({start: 0}) async {
     setState(() => _isLoading = true);
     var expandedLen =
-        _total - start < _currentPerPage! ? _total - start : _currentPerPage;
+    _total - start < _currentPerPage! ? _total - start : _currentPerPage;
     Future.delayed(const Duration(seconds: 0)).then((value) {
       _expanded = List.generate(expandedLen as int, (index) => false);
       _source.clear();
@@ -93,9 +92,9 @@ class _AddCustomerListState extends State<AddCustomerList> {
       } else {
         _sourceFiltered = _sourceOriginal
             .where((data) => data[_searchKey]
-                .toString()
-                .toLowerCase()
-                .contains(value.toString().toLowerCase()))
+            .toString()
+            .toLowerCase()
+            .contains(value.toString().toLowerCase()))
             .toList();
       }
 
@@ -120,6 +119,25 @@ class _AddCustomerListState extends State<AddCustomerList> {
           value: "id",
           show: true,
           sortable: true,
+          textAlign: TextAlign.center),
+      DatatableHeader(
+          text: "Item Picture",
+          value: "pic",
+          show: true,
+          sortable: false,
+          sourceBuilder: (value, dynamic) {
+            return Padding(
+              padding: const EdgeInsets.all(5),
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/images/islamabad.jpg',
+                  height: 120,
+                  width: 70,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          },
           textAlign: TextAlign.start),
       DatatableHeader(
           text: "Customer Name",
@@ -130,67 +148,33 @@ class _AddCustomerListState extends State<AddCustomerList> {
           editable: true,
           textAlign: TextAlign.left),
       DatatableHeader(
-          text: "Picture",
-          value: "pic",
-          show: true,
-          sortable: false,
-          sourceBuilder: (value, row) {
-            return Container(
-              padding: const EdgeInsets.all(5),
-              height: 70,
-              child: Image.asset(
-                'assets/images/islamabad.jpg',
-                fit: BoxFit.cover,
-              ),
-            );
-          },
-          textAlign: TextAlign.center),
-      DatatableHeader(
-          text: "Registration Date",
-          value: "reg",
+          text: "Item Category",
+          value: "category",
           show: true,
           sortable: true,
           textAlign: TextAlign.center),
       DatatableHeader(
-          text: "Mobile",
-          value: "mobile",
+          text: "Price",
+          value: "price",
           show: true,
           sortable: true,
           textAlign: TextAlign.center),
       DatatableHeader(
-          text: "Details",
-          value: "details",
+          text: "Measurement Title",
+          value: "measurement",
           show: true,
           sortable: false,
           sourceBuilder: (value, row) {
             return Padding(
               padding: const EdgeInsets.all(15.0),
               child: ElevatedButton(
-                child: Text("Details"),
+                child: Text("View Measurement Titles", style: MyTextStyles.xSmallWhite,),
                 onPressed: () {},
               ),
             );
           },
-          textAlign: TextAlign.left),
-      DatatableHeader(
-          text: "Actions",
-          value: "actions",
-          show: true,
-          sortable: false,
-          sourceBuilder: (value, row) {
-            return Wrap(
-              runSpacing: 5,
-              spacing: 5,
-              children: [
-                for(var i =0; i< value.length; i++)
-                ElevatedButton(
-                  child: Text("button $i"),
-                  onPressed: () {},
-                ),
-              ],
-            );
-          },
           textAlign: TextAlign.center),
+
     ];
 
     _initializeData();
@@ -239,23 +223,23 @@ class _AddCustomerListState extends State<AddCustomerList> {
                 if (_isSearch)
                   Expanded(
                       child: TextField(
-                    decoration: InputDecoration(
-                        hintText:
+                        decoration: InputDecoration(
+                            hintText:
                             'Enter search term based on ${_searchKey.replaceAll(RegExp('[\\W_]+'), ' ').toUpperCase()}',
-                        prefixIcon: IconButton(
-                            icon: const Icon(Icons.cancel),
-                            onPressed: () {
-                              setState(() {
-                                _isSearch = false;
-                              });
-                              _initializeData();
-                            }),
-                        suffixIcon: IconButton(
-                            icon: const Icon(Icons.search), onPressed: () {})),
-                    onSubmitted: (value) {
-                      _filterData(value);
-                    },
-                  )),
+                            prefixIcon: IconButton(
+                                icon: const Icon(Icons.cancel),
+                                onPressed: () {
+                                  setState(() {
+                                    _isSearch = false;
+                                  });
+                                  _initializeData();
+                                }),
+                            suffixIcon: IconButton(
+                                icon: const Icon(Icons.search), onPressed: () {})),
+                        onSubmitted: (value) {
+                          _filterData(value);
+                        },
+                      )),
                 if (!_isSearch)
                   TextButton(
                       onPressed: () {
@@ -291,9 +275,9 @@ class _AddCustomerListState extends State<AddCustomerList> {
                       value: _currentPerPage,
                       items: _perPages
                           .map((e) => DropdownMenuItem<int>(
-                                child: Text("$e"),
-                                value: e,
-                              ))
+                        child: Text("$e"),
+                        value: e,
+                      ))
                           .toList(),
                       onChanged: (dynamic value) {
                         setState(() {
@@ -317,12 +301,12 @@ class _AddCustomerListState extends State<AddCustomerList> {
                   onPressed: _currentPage == 1
                       ? null
                       : () {
-                          var nextSet = _currentPage - _currentPerPage!;
-                          setState(() {
-                            _currentPage = nextSet > 1 ? nextSet : 1;
-                            _resetData(start: _currentPage - 1);
-                          });
-                        },
+                    var nextSet = _currentPage - _currentPerPage!;
+                    setState(() {
+                      _currentPage = nextSet > 1 ? nextSet : 1;
+                      _resetData(start: _currentPage - 1);
+                    });
+                  },
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                 ),
                 IconButton(
@@ -330,15 +314,15 @@ class _AddCustomerListState extends State<AddCustomerList> {
                   onPressed: _currentPage + _currentPerPage! - 1 > _total
                       ? null
                       : () {
-                          var nextSet = _currentPage + _currentPerPage!;
+                    var nextSet = _currentPage + _currentPerPage!;
 
-                          setState(() {
-                            _currentPage = nextSet < _total
-                                ? nextSet
-                                : _total - _currentPerPage!;
-                            _resetData(start: nextSet - 1);
-                          });
-                        },
+                    setState(() {
+                      _currentPage = nextSet < _total
+                          ? nextSet
+                          : _total - _currentPerPage!;
+                      _resetData(start: nextSet - 1);
+                    });
+                  },
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                 )
               ],

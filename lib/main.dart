@@ -1,3 +1,4 @@
+import 'package:darjee_flutter/views/configuration/measurement_title/measurement_title.dart';
 import 'package:darjee_flutter/views/customer/customer.dart';
 import 'package:darjee_flutter/views/dashboard/dashboard.dart';
 import 'package:darjee_flutter/views/franchise/franchise.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Palette.myColors,
       ),
-      home:  Customer(),
+      home:  MeasurementTitle(),
     );
   }
 }
