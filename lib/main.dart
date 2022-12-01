@@ -1,3 +1,5 @@
+import 'package:darjee_flutter/views/configuration/design_options/design_options.dart';
+import 'package:darjee_flutter/views/configuration/measurement_book/measurement_book.dart';
 import 'package:darjee_flutter/views/configuration/measurement_title/measurement_title.dart';
 import 'package:darjee_flutter/views/customer/customer.dart';
 import 'package:darjee_flutter/views/dashboard/dashboard.dart';
@@ -12,18 +14,15 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // scrollBehavior: MyCustomScrollBehavior(),
       debugShowCheckedModeBanner: false,
       title: 'Darjee',
       theme: ThemeData(
         primarySwatch: Palette.myColors,
       ),
-      home:  MeasurementTitle(),
+      home: const DesignOptions(),
     );
   }
 }
