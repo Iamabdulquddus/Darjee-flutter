@@ -14,7 +14,7 @@ class ExtraDesignOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: Responsive.isDesktop(context)?620:1000,
+      height: Responsive.isDesktop(context) ? 200 : 300,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: secondary),
         borderRadius: BorderRadius.circular(10),
@@ -37,7 +37,7 @@ class ExtraDesignOptions extends StatelessWidget {
                   color: Colors.black,
                 ),
                 Text(
-                  '  Add Customer Info',
+                  '  Add Extra Design Options',
                   style: MyTextStyles.headingxSmallBoldBlack,
                 ),
               ],
@@ -55,49 +55,54 @@ class ExtraDesignOptions extends StatelessWidget {
                 children: [
                   Responsive.isDesktop(context)
                       ? Row(
-                    children: [
-                      CustomTextFormField(
-                        maxLines: 1,
-                        labelText: 'Design Item',
-                        icon: Icon(Icons.person),
-                      ),
-                      CustomTextFormField(
-                        maxLines: 1,
-                        labelText: 'Option',
-                        icon: Icon(Icons.add_box_rounded),
-                      ),
-                      CustomTextFormField(
-                        maxLines: 1,
-                        labelText: 'price',
-                        icon: Icon(Icons.money),
-                      ),
-                    ],
-                  )
+                          children: const [
+                            CustomTextFormField(
+                              maxLines: 1,
+                              labelText: 'Design Item',
+                              icon: Icon(Icons.person),
+                            ),
+                            CustomTextFormField(
+                              maxLines: 1,
+                              labelText: 'Option',
+                              icon: Icon(Icons.add_box_rounded),
+                            ),
+                            CustomTextFormField(
+                              maxLines: 1,
+                              labelText: 'price',
+                              icon: Icon(Icons.money),
+                            ),
+                          ],
+                        )
                       : SizedBox(
-                    height: 150,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children:  [
-                        CustomTextFormField(
-                          maxLines: 1,
-                          labelText: 'Design Item',
-                          icon: Icon(Icons.person),
+                          height: 150,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              CustomTextFormField(
+                                maxLines: 1,
+                                labelText: 'Design Item',
+                                icon: Icon(Icons.person),
+                              ),
+                              CustomTextFormField(
+                                maxLines: 1,
+                                labelText: 'Option',
+                                icon: Icon(Icons.add_box_rounded),
+                              ),
+                              CustomTextFormField(
+                                maxLines: 1,
+                                labelText: 'price',
+                                icon: Icon(Icons.money),
+                              ),
+                            ],
+                          ),
                         ),
-                        CustomTextFormField(
-                          maxLines: 1,
-                          labelText: 'Option',
-                          icon: Icon(Icons.add_box_rounded),
-                        ),
-                        CustomTextFormField(
-                          maxLines: 1,
-                          labelText: 'price',
-                          icon: Icon(Icons.money),
-                        ),
-                      ],
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('  Submit  '),
                     ),
                   ),
-                  Center(child: ElevatedButton(onPressed: (){}, child: const Text('  Submit  ')),)
                 ],
               ),
             ),

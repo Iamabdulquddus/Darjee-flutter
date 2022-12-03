@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../../admin/sidebar/sidebar_widget.dart';
 import '../../content.dart';
-import 'components/design_items.dart';
-import 'components/extra_desigin_options.dart';
+import 'components/add_worker_type.dart';
+import 'components/all_worker_types.dart';
 
-class DesignOptions extends StatelessWidget {
-  const DesignOptions({Key? key}) : super(key: key);
+class WorkerType extends StatelessWidget {
+  const WorkerType({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,11 @@ class DesignOptions extends StatelessWidget {
           context,
           Column(
             children: [
-              ExtraDesignOptions(),
-              SizedBox(height: 20,),
-              DesignItems(),
+              AddWorkerType(),
+              SizedBox(
+                height: 20,
+              ),
+              AllWorkerTypes(),
             ],
           ),
         ),
