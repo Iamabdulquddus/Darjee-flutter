@@ -1,4 +1,6 @@
 import 'package:darjee_flutter/views/configuration/worker_salary/worker_salary.dart';
+import 'package:darjee_flutter/views/fabric/article_title/article_title.dart';
+import 'package:darjee_flutter/views/fabric/fabric_item/fabric_item.dart';
 import 'package:flutter/material.dart';
 import 'constants/style.dart';
 
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Palette.myColors,
       ),
-      home: const WorkerSalary(),
+      home: const FabricItem(),
     );
   }
 }
