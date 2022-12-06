@@ -14,7 +14,7 @@ class AddMeasurementTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: 600 ,
+      height: 600,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: secondary),
         borderRadius: BorderRadius.circular(10),
@@ -72,7 +72,9 @@ class AddMeasurementTitle extends StatelessWidget {
                                     labelText: 'Item Name',
                                     icon: Icon(Icons.person),
                                   ),
-                                  SizedBox(width: 15,),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
                                   const CustomTextFormField(
                                     maxLines: 1,
                                     labelText: 'Item Price',
@@ -81,8 +83,8 @@ class AddMeasurementTitle extends StatelessWidget {
                                 ],
                               )
                             : SizedBox(
-                          height: 150,
-                              child: Column(
+                                height: 150,
+                                child: Column(
                                   children: [
                                     const CustomTextFormField(
                                       maxLines: 1,
@@ -96,7 +98,7 @@ class AddMeasurementTitle extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                            ),
+                              ),
                         const CustomDropdown(
                           dropdownButtonIcon: Icons.person_add_alt,
                           dropDownTitle: 'Select Category',
@@ -105,6 +107,7 @@ class AddMeasurementTitle extends StatelessWidget {
                             'Stitching',
                             'Un stitched'
                           ],
+                          title: 'Category',
                         ),
                       ],
                     ),

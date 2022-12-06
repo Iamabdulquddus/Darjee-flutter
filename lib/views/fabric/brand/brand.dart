@@ -5,8 +5,8 @@ import '../../content.dart';
 import 'components/add_brand_title.dart';
 import 'components/all_brand_titles.dart';
 
-class ArticleTitle extends StatelessWidget {
-  const ArticleTitle({Key? key}) : super(key: key);
+class BrandTitle extends StatelessWidget {
+  const BrandTitle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

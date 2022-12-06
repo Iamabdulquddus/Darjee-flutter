@@ -122,10 +122,9 @@ class AddCustomerInfo extends StatelessWidget {
                                     labelText: 'Opening Balance',
                                   ),
                                   CustomDropdown(
-
                                     dropdownButtonIcon: Icons.person,
                                     dropDownTitle: 'Select gender',
-                                    dropDownItemList: ['male', 'female'],
+                                    dropDownItemList: ['male', 'female'], title: 'Gender',
                                   ),
                                 ],
                               ),
@@ -189,7 +188,7 @@ class AddCustomerInfo extends StatelessWidget {
                               CustomDropdown(
                                 dropdownButtonIcon: Icons.person_add_alt,
                                 dropDownTitle: 'Select gender',
-                                dropDownItemList: const ['male', 'female'],
+                                dropDownItemList: const ['male', 'female'], title: 'Gender',
                               ),
                             ],
                           ),

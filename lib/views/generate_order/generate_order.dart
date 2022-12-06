@@ -74,11 +74,13 @@ class GenerateOrderForm extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomDropdown(
+                        title: 'Select Customer',
                         dropdownButtonIcon: Icons.person_add_alt,
                         dropDownTitle: 'Select Customer',
                         dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'],
                       ),
                       CustomDropdown(
+                        title: 'Select Customer',
                         dropdownButtonIcon: Icons.person_add_alt,
                         dropDownTitle: 'Select Customer',
                         dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'],
@@ -89,14 +91,17 @@ class GenerateOrderForm extends StatelessWidget {
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
                      CustomDropdown(
+                       title: 'Select Customer',
                        dropdownButtonIcon: Icons.person_add_alt,
                        dropDownTitle: 'Select Customer',
                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'],
                      ),
                      CustomDropdown(
+                       title: 'Select Customer',
                        dropdownButtonIcon: Icons.person_add_alt,
                        dropDownTitle: 'Select Customer',
                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'],
+
                      ),
                    ],
 

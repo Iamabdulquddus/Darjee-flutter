@@ -6,7 +6,7 @@ import '../../constants/images.dart';
 import '../../constants/style.dart';
 import '../../controllers/sidebar_controller.dart';
 import '../../model/side_menu_item.dart';
-import 'sidebar_widget.dart';
+import '../../routes/routes.dart';
 
 List<CDM> sidebarList = [
   CDM(
@@ -16,69 +16,83 @@ List<CDM> sidebarList = [
       subList(
         subTitle: 'Dashboard',
         subIcon: Icons.dashboard_customize_rounded,
-        // myRoute: MyRoutesLink.mainRoute
+        myRoute: MyRoutes.getDashboard()
       ),
     ],
   ),
   CDM(
-    title: 'Users',
+    title: 'Customer',
     icon: Icons.supervised_user_circle,
     submenus: [
       subList(
-        subTitle: 'Admin',
-        subIcon: Icons.admin_panel_settings,
-        // myRoute: MyRoutesLink.getListOfAdmin
-      ),
-      subList(
         subTitle: 'Customer',
-        subIcon: Icons.perm_identity_sharp,
-        // myRoute: MyRoutesLink.getListOfCustomer
+        subIcon: Icons.admin_panel_settings,
+        myRoute: MyRoutes.getCustomer()
       ),
     ],
   ),
   CDM(
-    title: 'Packages',
+    title: 'Configuration',
     icon: Icons.local_offer,
     submenus: [
       subList(
-          // myRoute: MyRoutesLink.getListOfPackages,
-          subTitle: 'Packages List',
-          subIcon: Icons.list),
+          subTitle: 'Measurement Title',
+          subIcon: Icons.list,
+        myRoute: MyRoutes.getMeasurementTitle(),
+      ),
       subList(
-          // myRoute: MyRoutesLink.getCreatePackage,
-          subTitle: 'Create Package',
-          subIcon: Icons.create),
-    ],
-  ),
-  CDM(
-    title: 'Quotation',
-    icon: Icons.bookmark_border,
-    submenus: [
+          subTitle: 'Measurement Book',
+          subIcon: Icons.create,
+        myRoute: MyRoutes.getMeasurementBook(),
+      ),
       subList(
-        subTitle: 'Quotation List',
-        // myRoute: MyRoutesLink.getListOfQuotation,
-        subIcon: Icons.list_alt,
+          subTitle: 'Design Options',
+          subIcon: Icons.create,
+        myRoute: MyRoutes.getDesignOptions(),
+      ),
+      subList(
+          subTitle: 'Worker Type',
+          subIcon: Icons.create,
+        myRoute: MyRoutes.getWorkerType(),
+      ),
+      subList(
+          subTitle: 'Worker Salary',
+          subIcon: Icons.create,
+        myRoute: MyRoutes.getWorkerSalary(),
       ),
     ],
   ),
   CDM(
-    title: 'Orders',
-    icon: Icons.shopping_cart_checkout,
+    title: 'Fabric Configuration',
+    icon: Icons.local_offer,
     submenus: [
-      subList(subTitle: 'Bank Order', subIcon: Icons.add_card_rounded),
-      subList(subTitle: 'Package Order', subIcon: Icons.add_card_rounded),
-      subList(subTitle: 'Company Order', subIcon: Icons.add_card_rounded),
+      subList(
+          subTitle: 'Add Article Title',
+          subIcon: Icons.list,
+        myRoute: MyRoutes.getArticleTitle(),
+      ),
+      subList(
+          subTitle: 'Add Brand',
+          subIcon: Icons.create,
+        myRoute: MyRoutes.getBrandTitle(),
+      ),
+      subList(
+          subTitle: 'Fabric Item',
+          subIcon: Icons.create,
+        myRoute: MyRoutes.getFabricItem(),
+      ),
+      subList(
+          subTitle: 'Worker Type',
+          subIcon: Icons.create,
+        myRoute: MyRoutes.getWorkerType(),
+      ),
+      subList(
+          subTitle: 'Worker Salary',
+          subIcon: Icons.create,
+        myRoute: MyRoutes.getWorkerSalary(),
+      ),
     ],
   ),
-  // CDM(
-  //   title: 'Home2',
-  //   icon: Icons.ac_unit,
-  //   submenus: [
-  //     subList(subTitle: 'subTitle', subIcon: Icons.add_card_rounded),
-  //     subList(subTitle: 'subTitle', subIcon: Icons.add_card_rounded),
-  //     subList(subTitle: 'subTitle', subIcon: Icons.add_card_rounded),
-  //   ],
-  // ),
 ];
 
 SidebarController sidebarController = Get.put(SidebarController());
@@ -132,7 +146,7 @@ Widget headerTitle(double DefaultPadding) {
                   sidebarList[sidebarController.selectedMenuIndex.value].title,
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: wDefaultPadding * 1.5)),
+                  fontSize: 14)),
           TextSpan(
               text:
                   " > ${sidebarList[sidebarController.selectedMenuIndex.value].submenus[sidebarController.selectedSubmenuIndex.value].subTitle}"),
@@ -165,6 +179,7 @@ Align SidebarButtotmSetting(
       padding: EdgeInsets.all(padding),
       child: InkWell(
         onTap: () {
+          Get.toNamed(MyRoutes.getDisplay());
           if (kDebugMode) {
             print("Settings");
           }
@@ -228,7 +243,7 @@ ListView ListItem() {
               offset: Offset(-21, 0),
               child: Text(
                 sidebarList[index].title,
-                style: TextStyle(color: Colors.white, fontSize: 15),
+                style: TextStyle(color: Colors.white, fontSize: 14),
               ),
             ),
 

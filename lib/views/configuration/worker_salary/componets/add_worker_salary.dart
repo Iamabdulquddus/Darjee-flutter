@@ -14,7 +14,7 @@ class AddWorkerSalary extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: 300,
+      height: 400,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: secondary),
         borderRadius: BorderRadius.circular(10),
@@ -60,17 +60,17 @@ class AddWorkerSalary extends StatelessWidget {
                       CustomDropdown(
                         dropdownButtonIcon: Icons.person_add_alt,
                         dropDownTitle: 'Select Worker Type',
-                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'],
+                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Type',
                       ),
                       CustomDropdown(
                         dropdownButtonIcon: Icons.person_add_alt,
                         dropDownTitle: 'Select Worker Type First',
-                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'],
+                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Type First',
                       ),
                       CustomDropdown(
                         dropdownButtonIcon: Icons.person_add_alt,
                         dropDownTitle: 'Select Worker Name First',
-                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'],
+                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Name First',
                       ),
                     ],
                   ),

@@ -10,14 +10,19 @@ import '../views/configuration/worker_salary/worker_salary.dart';
 import '../views/configuration/worker_type/worker_type.dart';
 import '../views/customer/customer.dart';
 import '../views/dashboard/dashboard.dart';
+import '../views/fabric/article_title/article_title.dart';
+import '../views/fabric/brand/brand.dart';
+import '../views/fabric/fabric_item/fabric_item.dart';
 import '../views/franchise/franchise.dart';
 import '../views/generate_order/generate_order.dart';
 import '../views/login/login.dart';
+import 'display.dart';
 
 
 class MyRoutes {
 
   ///views routes***************
+  static String display = '/display';
   static String dashboard = '/dashboard';
   static String franchise = '/franchise';
   static String login = '/login';
@@ -28,8 +33,12 @@ class MyRoutes {
   static String designOptions = '/design-options';
   static String workerType = '/worker-type';
   static String workerSalary = '/worker-salary';
+  static String articleTitle = '/article-title';
+  static String brandTitle = '/brand-title';
+  static String fabricItem = '/fabric-item';
 
 
+  static String getDisplay() => display;
   static String getDashboard() => dashboard;
   static String getFranchise() => franchise;
   static String getLogin() => login;
@@ -40,11 +49,20 @@ class MyRoutes {
   static String getDesignOptions() => designOptions;
   static String getWorkerType() => workerType;
   static String getWorkerSalary() => workerSalary;
+  static String getArticleTitle() => articleTitle;
+  static String getBrandTitle() => brandTitle;
+  static String getFabricItem() => fabricItem;
 
 
   /// *********************GetPage************************
 
   static List<GetPage> appRoutes() => [
+    GetPage(
+      name: display,
+      page: () => Display(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
     GetPage(
       name: dashboard,
       page: () => Dashboard(),
@@ -102,6 +120,24 @@ class MyRoutes {
     GetPage(
       name: workerSalary,
       page: () => WorkerSalary(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: articleTitle,
+      page: () => ArticleTitle(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: brandTitle,
+      page: () => BrandTitle(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: fabricItem,
+      page: () => FabricItem(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),
