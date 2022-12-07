@@ -36,7 +36,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return  Expanded(
       child: Container(
         height: 60,
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+        padding: const EdgeInsets.symmetric(vertical: 5, ),
         child: TextFormField(
           maxLength: widget.maxLenght,
           maxLines: widget.maxLines,

@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:get/get_navigation/src/routes/route_middleware.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
-
 import '../views/configuration/design_options/design_options.dart';
 import '../views/configuration/measurement_book/measurement_book.dart';
 import '../views/configuration/measurement_title/measurement_title.dart';
@@ -14,6 +12,7 @@ import '../views/fabric/article_title/article_title.dart';
 import '../views/fabric/brand/brand.dart';
 import '../views/fabric/fabric_item/fabric_item.dart';
 import '../views/franchise/franchise.dart';
+import '../views/generate_order/components/select_item.dart';
 import '../views/generate_order/generate_order.dart';
 import '../views/login/login.dart';
 import 'display.dart';
@@ -36,6 +35,7 @@ class MyRoutes {
   static String articleTitle = '/article-title';
   static String brandTitle = '/brand-title';
   static String fabricItem = '/fabric-item';
+  static String selectItem = '/select-item';
 
 
   static String getDisplay() => display;
@@ -52,6 +52,7 @@ class MyRoutes {
   static String getArticleTitle() => articleTitle;
   static String getBrandTitle() => brandTitle;
   static String getFabricItem() => fabricItem;
+  static String getSelectItem() => selectItem;
 
 
   /// *********************GetPage************************
@@ -138,6 +139,12 @@ class MyRoutes {
     GetPage(
       name: fabricItem,
       page: () => FabricItem(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: selectItem,
+      page: () => SelectItem(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),

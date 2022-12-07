@@ -77,6 +77,12 @@ class Display extends StatelessWidget {
                 },
                 child: const Text('Brand Title'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(MyRoutes.getGenerateOrder());
+                },
+                child: const Text('Generate Order'),
+              ),
             ],
           ),
         ),

@@ -22,7 +22,6 @@ class CustomDropdown extends StatefulWidget {
 class _CustomDropdownState extends State<CustomDropdown> {
   String? selected;
   bool iconColorChanged = false;
-  // late List items ;
 
   @override
   Widget build(BuildContext context) {
@@ -111,15 +110,12 @@ class _CustomDropdownState extends State<CustomDropdown> {
               },
               buttonHeight: 40,
               buttonWidth: Responsive.isDesktop(context)
-                  ? size.width / 3.5
+                  ? size.width / 3.9
                   : size.width / 2,
               dropdownMaxHeight: 150,
               buttonPadding: const EdgeInsets.only(left: 14, right: 14),
               buttonDecoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                // border: Border.all(
-                //   color: Colors.black,
-                // ),
                 boxShadow:   const [
                   BoxShadow(
                     color: secondary,
