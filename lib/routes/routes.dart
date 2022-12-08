@@ -12,7 +12,8 @@ import '../views/fabric/article_title/article_title.dart';
 import '../views/fabric/brand/brand.dart';
 import '../views/fabric/fabric_item/fabric_item.dart';
 import '../views/franchise/franchise.dart';
-import '../views/generate_order/components/select_item.dart';
+import '../views/order_details/order_details.dart';
+import '../views/select_item/select_item.dart';
 import '../views/generate_order/generate_order.dart';
 import '../views/login/login.dart';
 import 'display.dart';
@@ -36,6 +37,7 @@ class MyRoutes {
   static String brandTitle = '/brand-title';
   static String fabricItem = '/fabric-item';
   static String selectItem = '/select-item';
+  static String orderDetails = '/order-details';
 
 
   static String getDisplay() => display;
@@ -53,6 +55,7 @@ class MyRoutes {
   static String getBrandTitle() => brandTitle;
   static String getFabricItem() => fabricItem;
   static String getSelectItem() => selectItem;
+  static String getOrderDetails() => orderDetails;
 
 
   /// *********************GetPage************************
@@ -145,6 +148,12 @@ class MyRoutes {
     GetPage(
       name: selectItem,
       page: () => SelectItem(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: orderDetails,
+      page: () => OrderDetails(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),

@@ -67,17 +67,14 @@ class AddFabricItem extends StatelessWidget {
                           children: [
                             PickImage(),
                             CustomDropdown(
-                              dropdownButtonIcon: Icons.person,
                               dropDownTitle: 'Select Article Title',
                               dropDownItemList: ['male', 'female'], title: 'Article Title',
                             ),
                             CustomDropdown(
-                              dropdownButtonIcon: Icons.person,
                               dropDownTitle: 'Select Brand Title',
                               dropDownItemList: ['male', 'female'], title: 'Brand Title',
                             ),
                             CustomDropdown(
-                              dropdownButtonIcon: Icons.person,
                               dropDownTitle: 'Select Vendor',
                               dropDownItemList: ['male', 'female'], title: 'Vendor',
                             ),
@@ -102,7 +99,6 @@ class AddFabricItem extends StatelessWidget {
                           children: const [
                             CustomDropdown(
                               title: 'Unit',
-                              dropdownButtonIcon: Icons.person,
                               dropDownTitle: 'Select Unit',
                               dropDownItemList: ['male', 'female'],
                             ),
@@ -140,19 +136,16 @@ class AddFabricItem extends StatelessWidget {
                         PickImage(),
                         CustomDropdown(
                           title: 'Article Title',
-                          dropdownButtonIcon: Icons.person,
                           dropDownTitle: 'Select Article Title',
                           dropDownItemList: ['male', 'female'],
                         ),
                         CustomDropdown(
                           title: 'Brand Title',
-                          dropdownButtonIcon: Icons.person,
                           dropDownTitle: 'Select Brand Title',
                           dropDownItemList: ['male', 'female'],
                         ),
                         CustomDropdown(
                           title: 'Vendor',
-                          dropdownButtonIcon: Icons.person,
                           dropDownTitle: 'Select Vendor',
                           dropDownItemList: ['male', 'female'],
                         ),
@@ -168,7 +161,6 @@ class AddFabricItem extends StatelessWidget {
                         ),
                         CustomDropdown(
                           title: 'Unit',
-                          dropdownButtonIcon: Icons.person,
                           dropDownTitle: 'Select Unit',
                           dropDownItemList: ['male', 'female'],
                         ),

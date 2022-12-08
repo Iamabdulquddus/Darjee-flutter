@@ -1,11 +1,13 @@
 import 'dart:ui';
-import 'package:darjee_flutter/views/generate_order/components/select_item_card.dart';
 import 'package:flutter/material.dart';
-import '../../../../constants/style.dart';
-import '../../../admin/sidebar/sidebar_widget.dart';
-import '../../../model/order_item.dart';
-import '../../../responsive.dart';
-import '../../content.dart';
+import '../../../constants/style.dart';
+import '../../admin/sidebar/sidebar_widget.dart';
+import '../../model/order_item.dart';
+import '../../responsive.dart';
+import '../../routes/routes.dart';
+import '../content.dart';
+import 'components/select_item_card.dart';
+import 'package:get/get.dart';
 
 class SelectItem extends StatefulWidget {
   const SelectItem({Key? key}) : super(key: key);
@@ -20,14 +22,16 @@ class _SelectItemState extends State<SelectItem> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: WidgetWithSidebar(
-          context, cardOfUserTable(context, const OrderDetails())),
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.arrow_forward, size: 20,), ),
+          context, cardOfUserTable(context, const SelectItemGrid())),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Get.toNamed(MyRoutes.getOrderDetails());
+      },child: Icon(Icons.arrow_forward, size: 20,), ),
     );
   }
 }
 
-class OrderDetails extends StatelessWidget {
-  const OrderDetails({Key? key}) : super(key: key);
+class SelectItemGrid extends StatelessWidget {
+  const SelectItemGrid({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

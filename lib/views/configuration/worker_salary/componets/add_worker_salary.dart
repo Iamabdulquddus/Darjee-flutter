@@ -58,17 +58,14 @@ class AddWorkerSalary extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       CustomDropdown(
-                        dropdownButtonIcon: Icons.person_add_alt,
                         dropDownTitle: 'Select Worker Type',
                         dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Type',
                       ),
                       CustomDropdown(
-                        dropdownButtonIcon: Icons.person_add_alt,
                         dropDownTitle: 'Select Worker Type First',
                         dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Type First',
                       ),
                       CustomDropdown(
-                        dropdownButtonIcon: Icons.person_add_alt,
                         dropDownTitle: 'Select Worker Name First',
                         dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Name First',
                       ),

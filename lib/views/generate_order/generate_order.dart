@@ -95,7 +95,6 @@ class _GenerateOrderFormState extends State<GenerateOrderForm> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children:  [
                                     const CustomDropdown(
-                                      dropdownButtonIcon: Icons.person,
                                       dropDownTitle: 'Select Customer',
                                       dropDownItemList: [
                                         'Ahsan',
@@ -104,7 +103,6 @@ class _GenerateOrderFormState extends State<GenerateOrderForm> {
                                       title: 'Customer',
                                     ),
                                     const CustomDropdown(
-                                      dropdownButtonIcon: Icons.person,
                                       dropDownTitle: 'Select Worker',
                                       dropDownItemList: [
                                         'Ahsan',
@@ -113,7 +111,6 @@ class _GenerateOrderFormState extends State<GenerateOrderForm> {
                                       title: 'Booking by',
                                     ),
                                     const CustomDropdown(
-                                      dropdownButtonIcon: Icons.person,
                                       dropDownTitle: 'Select order type',
                                       dropDownItemList: [
                                         'Ahsan',
@@ -122,7 +119,6 @@ class _GenerateOrderFormState extends State<GenerateOrderForm> {
                                       title: 'Order Type',
                                     ),
                                     const CustomDropdown(
-                                      dropdownButtonIcon: Icons.person,
                                       dropDownTitle: 'Select Order Status',
                                       dropDownItemList: [
                                         'Ahsan',
@@ -190,7 +186,6 @@ class _GenerateOrderFormState extends State<GenerateOrderForm> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children:  [
                                 const CustomDropdown(
-                                  dropdownButtonIcon: Icons.person,
                                   dropDownTitle: 'Select Customer',
                                   dropDownItemList: [
                                     'Ahsan',
@@ -199,7 +194,6 @@ class _GenerateOrderFormState extends State<GenerateOrderForm> {
                                   title: 'Customer',
                                 ),
                                 const CustomDropdown(
-                                  dropdownButtonIcon: Icons.person,
                                   dropDownTitle: 'Select Worker',
                                   dropDownItemList: [
                                     'Ahsan',
@@ -208,7 +202,6 @@ class _GenerateOrderFormState extends State<GenerateOrderForm> {
                                   title: 'Booking by',
                                 ),
                                 const CustomDropdown(
-                                  dropdownButtonIcon: Icons.person,
                                   dropDownTitle: 'Select order type',
                                   dropDownItemList: [
                                     'Ahsan',
@@ -218,7 +211,6 @@ class _GenerateOrderFormState extends State<GenerateOrderForm> {
                                 ),
 
                                 const CustomDropdown(
-                                  dropdownButtonIcon: Icons.person,
                                   dropDownTitle: 'Select Order Status',
                                   dropDownItemList: [
                                     'Ahsan',

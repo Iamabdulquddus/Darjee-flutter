@@ -100,7 +100,6 @@ class AddMeasurementTitle extends StatelessWidget {
                                 ),
                               ),
                         const CustomDropdown(
-                          dropdownButtonIcon: Icons.person_add_alt,
                           dropDownTitle: 'Select Category',
                           dropDownItemList: [
                             'Dry Clean',

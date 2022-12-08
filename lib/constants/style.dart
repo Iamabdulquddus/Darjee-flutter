@@ -180,7 +180,7 @@ class MyTextStyles {
     fontSize: 16,
   );
 
-  static TextStyle subHeadingBoldBlack = TextStyle(
+    static TextStyle subHeadingBoldBlack = TextStyle(
     color: Colors.black,
     fontSize: 14,
     fontWeight: FontWeight.bold,
