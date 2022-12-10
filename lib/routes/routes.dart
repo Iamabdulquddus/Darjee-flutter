@@ -16,6 +16,7 @@ import '../views/order_details/order_details.dart';
 import '../views/select_item/select_item.dart';
 import '../views/generate_order/generate_order.dart';
 import '../views/login/login.dart';
+import '../views/splash/splash.dart';
 import 'display.dart';
 
 
@@ -23,6 +24,7 @@ class MyRoutes {
 
   ///views routes***************
   static String display = '/display';
+  static String splash = '/splash';
   static String dashboard = '/dashboard';
   static String franchise = '/franchise';
   static String login = '/login';
@@ -41,6 +43,7 @@ class MyRoutes {
 
 
   static String getDisplay() => display;
+  static String getSplash() => splash;
   static String getDashboard() => dashboard;
   static String getFranchise() => franchise;
   static String getLogin() => login;
@@ -64,6 +67,12 @@ class MyRoutes {
     GetPage(
       name: display,
       page: () => Display(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: splash,
+      page: () => Splash(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),

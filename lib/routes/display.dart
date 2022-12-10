@@ -17,6 +17,13 @@ class Display extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   Get.toNamed(
+                      MyRoutes.getSplash());
+                },
+                child: const Text('Splash'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(
                       MyRoutes.getDashboard());
                 },
                 child: const Text('Dashboard'),

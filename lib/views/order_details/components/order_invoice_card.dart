@@ -13,7 +13,7 @@ class OrderInvoiceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: Responsive.isDesktop(context) ? 750 : 1000,
+      height: Responsive.isDesktop(context) ? 750 : 820,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: secondary),
         borderRadius: BorderRadius.circular(10),
