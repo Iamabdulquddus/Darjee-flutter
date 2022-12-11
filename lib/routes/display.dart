@@ -90,6 +90,18 @@ class Display extends StatelessWidget {
                 },
                 child: const Text('Generate Order'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(MyRoutes.getStitchingOrders());
+                },
+                child: const Text('Stitching Orders'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(MyRoutes.getUnassignedOrders());
+                },
+                child: const Text('Unassigned Orders'),
+              ),
             ],
           ),
         ),

@@ -8,6 +8,7 @@ import '../views/configuration/worker_salary/worker_salary.dart';
 import '../views/configuration/worker_type/worker_type.dart';
 import '../views/customer/customer.dart';
 import '../views/dashboard/dashboard.dart';
+import '../views/dryclean_orders/unassigned_orders/unassigned_orders.dart';
 import '../views/fabric/article_title/article_title.dart';
 import '../views/fabric/brand/brand.dart';
 import '../views/fabric/fabric_item/fabric_item.dart';
@@ -17,6 +18,7 @@ import '../views/select_item/select_item.dart';
 import '../views/generate_order/generate_order.dart';
 import '../views/login/login.dart';
 import '../views/splash/splash.dart';
+import '../views/stiching_orders/stiching_orders.dart';
 import 'display.dart';
 
 
@@ -40,6 +42,8 @@ class MyRoutes {
   static String fabricItem = '/fabric-item';
   static String selectItem = '/select-item';
   static String orderDetails = '/order-details';
+  static String stitchingOrders = '/stitching-orders';
+  static String unassignedOrders = '/unassigned-orders';
 
 
   static String getDisplay() => display;
@@ -59,6 +63,8 @@ class MyRoutes {
   static String getFabricItem() => fabricItem;
   static String getSelectItem() => selectItem;
   static String getOrderDetails() => orderDetails;
+  static String getStitchingOrders() => stitchingOrders;
+  static String getUnassignedOrders() => unassignedOrders;
 
 
   /// *********************GetPage************************
@@ -163,6 +169,18 @@ class MyRoutes {
     GetPage(
       name: orderDetails,
       page: () => OrderDetails(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: stitchingOrders,
+      page: () => StitchingOrders(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: unassignedOrders,
+      page: () => UnassignedOrders(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),
