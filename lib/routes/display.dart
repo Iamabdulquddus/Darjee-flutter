@@ -102,6 +102,12 @@ class Display extends StatelessWidget {
                 },
                 child: const Text('Unassigned Orders'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(MyRoutes.getAssignedOrders());
+                },
+                child: const Text('Assigned Orders'),
+              ),
             ],
           ),
         ),

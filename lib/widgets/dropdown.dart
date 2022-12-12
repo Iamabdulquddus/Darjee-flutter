@@ -27,7 +27,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
       children: [
         Text(
           widget.title,
-          style: MyTextStyles.headingxSmallBoldBlack,
+          style: MyTextStyles.headingxSmallBoldPrimary,
         ),
         const SizedBox(
           height: 10,

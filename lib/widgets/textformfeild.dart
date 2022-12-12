@@ -33,33 +33,35 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return  Container(
-      height: 60,
-      padding: const EdgeInsets.symmetric(vertical: 5, ),
-      child: TextFormField(
-        maxLength: widget.maxLenght,
-        maxLines: widget.maxLines,
-        enabled: widget.editable,
-        keyboardType: widget.keyboardType,
-        decoration: InputDecoration(
+    return  Expanded(
+      child: Container(
+        height: 60,
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 2 ),
+        child: TextFormField(
+          maxLength: widget.maxLenght,
+          maxLines: widget.maxLines,
+          enabled: widget.editable,
+          keyboardType: widget.keyboardType,
+          decoration: InputDecoration(
 
-          labelText: widget.labelText,
-          prefixIcon: widget.icon,
-          counterStyle: const TextStyle(
-            height: double.minPositive,
-          ),
-          counterText: "",
-          fillColor: Colors.white,
-          filled: true,
-          errorText: widget.errorText,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(
-              5.0,
+            labelText: widget.labelText,
+            prefixIcon: widget.icon,
+            counterStyle: const TextStyle(
+              height: double.minPositive,
+            ),
+            counterText: "",
+            fillColor: Colors.white,
+            filled: true,
+            errorText: widget.errorText,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(
+                5.0,
+              ),
             ),
           ),
+          controller: widget.controller,
+          onChanged: widget.onChange,
         ),
-        controller: widget.controller,
-        onChanged: widget.onChange,
       ),
     );
   }
