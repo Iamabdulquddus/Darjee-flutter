@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 
 import '../order_details/components/order_detail_form.dart';
 import 'components/generate_order_form.dart';
-import 'components/select_item.dart';
 
 class GenerateOrder extends StatefulWidget {
   const GenerateOrder({Key? key}) : super(key: key);
@@ -26,8 +25,6 @@ class _GenerateOrderState extends State<GenerateOrder> {
           Column(
             children: [
               const GenerateOrderForm(),
-              SizedBox(height: 20),
-              SelectItemGrid(),
               SizedBox(height: 20),
               OrderDetailForm(),
             ],

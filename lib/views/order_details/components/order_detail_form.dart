@@ -2,10 +2,11 @@ import 'dart:ui';
 import 'package:darjee_flutter/widgets/dropdown.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/style.dart';
+import '../../../model/order_item.dart';
 import '../../../responsive.dart';
+import '../../generate_order/components/select_item_card.dart';
 import 'order_detail_extra.dart';
 import 'order_measurement_card.dart';
-
 
 class OrderDetailForm extends StatelessWidget {
   const OrderDetailForm({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class OrderDetailForm extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: Responsive.isDesktop(context)? 800 : 1500,
+      height: Responsive.isDesktop(context) ? 1200 : 1850,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: secondary),
         borderRadius: BorderRadius.circular(10),
@@ -36,9 +37,18 @@ class OrderDetailForm extends StatelessWidget {
                   Icons.menu_rounded,
                   color: primary,
                 ),
-                Text(
-                  '  Order Details',
-                  style: MyTextStyles.headingxSmallBoldBlack,
+                Expanded(
+                  child: Text(
+                    '  Ahsan',
+                    style: MyTextStyles.headingxSmallBoldBlack,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
                 ),
               ],
             ),
@@ -47,113 +57,138 @@ class OrderDetailForm extends StatelessWidget {
             flex: 9,
             child: Container(
               width: size.width,
-              padding: const EdgeInsets.all(wDefaultPadding),
+              padding: const EdgeInsets.all(wDefaultPadding / 2),
               color: lightColor,
-              child:Responsive.isDesktop(context)?
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 750,
-                    width: size.width/3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: size.width/2.5,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: primary,
-                          ),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Text(
-                                  'Order Measurement',
-                                  style: MyTextStyles.headingxSmallBoldWhite,
-                                ),
-                              )
-                            ],
+                  Text("Select Item", style: MyTextStyles.headingxSmallBoldPrimary,),
+                  Container(
+                    height: 290,
+                    width: size.width,
+                    padding: const EdgeInsets.all(wDefaultPadding),
+                    color: lightColor,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: wDefaultPadding, vertical: wDefaultPadding),
+                      child: ListView(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        children: List.generate(
+                          orderItemList.length,
+                              (index) => SelectItemCard(
+                            selectItemCard: orderItemList[index],
                           ),
                         ),
-                        SizedBox(height: 20,),
-                        CustomDropdown(
-                          dropDownTitle: "Measurement by",
-                          dropDownItemList: [
-                            'Ahsan',
-                            'ali',
-                          ],
-                          title: 'Measurement by',),
-                        SizedBox(height: 20,),
-                        SizedBox(
-                          height: 500,
-                          child: ListView(
-                            children: [
-                              OrderMeasurementCard(),
-                              SizedBox(height: 20,),
-                              OrderMeasurementCard(),
-                            ],
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    height: 750,
-                    width: size.width/3,
-                    child: OrderDetailsExtra(),
-                  ),
-                ],
-              ) :
-              Column(
-                children: [
-                  SizedBox(
-                    height: 700,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: Responsive.isDesktop(context) ? size.width/2.5: size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: primary,
-                          ),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Text(
-                                  'Order Measurement',
-                                  style: MyTextStyles.headingxSmallBoldWhite,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 20,),
-                        CustomDropdown(
-                          dropDownTitle: "Measurement by",
-                          dropDownItemList: [
-                            'Ahsan',
-                            'ali',
+                  Responsive.isDesktop(context)
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              height: 750,
+                              width: size.width / 3,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: size.width / 2.5,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: primary,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Text(
+                                            'Order Measurement',
+                                            style:
+                                                MyTextStyles.headingxSmallBoldWhite,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  CustomDropdown(
+                                    dropDownTitle: "Measurement by",
+                                    dropDownItemList: [
+                                      'Ahsan',
+                                      'ali',
+                                    ],
+                                    title: 'Measurement by',
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  OrderMeasurementCard(),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 750,
+                              width: size.width / 3,
+                              child: OrderDetailsExtra(),
+                            ),
                           ],
-                          title: 'Measurement by',),
-                        SizedBox(height: 20,),
-                        SizedBox(
-                          height: 500,
-                          child: ListView(
-                            children: [
-                              OrderMeasurementCard(),
-                              SizedBox(height: 20,),
-                              OrderMeasurementCard(),
-                            ],
-                          ),
+                        )
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: Responsive.isDesktop(context)
+                                  ? size.width / 2.5
+                                  : size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: primary,
+                              ),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text(
+                                      'Order Measurement',
+                                      style: MyTextStyles.headingxSmallBoldWhite,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            CustomDropdown(
+                              dropDownTitle: "Measurement by",
+                              dropDownItemList: [
+                                'Ahsan',
+                                'ali',
+                              ],
+                              title: 'Measurement by',
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            SizedBox(
+                              // height: 400,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  OrderMeasurementCard(),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            SizedBox(height: 730, child: OrderDetailsExtra()),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  OrderDetailsExtra(),
                 ],
               ),
             ),

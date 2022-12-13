@@ -36,9 +36,13 @@ class OrderDetailsExtra extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        CustomTextFormField(
-          maxLines: 1,
-          labelText: 'Discount',
+        Row(
+          children: [
+            CustomTextFormField(
+              maxLines: 1,
+              labelText: 'Discount',
+            ),
+          ],
         ),
         ElevatedButton(
           onPressed: () {},

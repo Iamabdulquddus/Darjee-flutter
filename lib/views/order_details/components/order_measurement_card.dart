@@ -5,17 +5,13 @@ import '../../../constants/style.dart';
 import '../../../widgets/dropdown.dart';
 import 'other_measurement_radio_button.dart';
 
-class OrderMeasurementCard extends StatefulWidget {
+class OrderMeasurementCard extends StatelessWidget {
   const OrderMeasurementCard({Key? key}) : super(key: key);
 
   @override
-  State<OrderMeasurementCard> createState() => _OrderMeasurementCardState();
-}
-
-class _OrderMeasurementCardState extends State<OrderMeasurementCard> {
-  @override
   Widget build(BuildContext context) {
     return Container(
+      // height: 500,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.black12,
@@ -49,41 +45,51 @@ class _OrderMeasurementCardState extends State<OrderMeasurementCard> {
           const SizedBox(
             height: 10,
           ),
-          Padding(
-            // height: 400,
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          SizedBox(
+            height: 490,
+            child: ListView(
               children: [
-                const CustomTextFormField(
-                  maxLines: 1,
-                  labelText: 'Enter Quantity',
-                  keyboardType: TextInputType.text,
+                Row(
+                  children: const [
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'Enter Quantity',
+                      keyboardType: TextInputType.text,
+                    ),
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'Total Quantity',
+                      keyboardType: TextInputType.text,
+                    ),
+                  ],
                 ),
-                const CustomTextFormField(
-                  maxLines: 1,
-                  labelText: 'Total Quantity',
-                  keyboardType: TextInputType.text,
+                Row(
+                  children: [
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'لمبائی',
+                      keyboardType: TextInputType.phone,
+                    ),
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'تیرا',
+                      keyboardType: TextInputType.phone,
+                    ),
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'بازو',
+                      keyboardType: TextInputType.phone,
+                    ),
+                  ],
                 ),
-                const CustomTextFormField(
-                  maxLines: 1,
-                  labelText: 'لمبائی',
-                  keyboardType: TextInputType.phone,
-                ),
-                const CustomTextFormField(
-                  maxLines: 1,
-                  labelText: 'تیرا',
-                  keyboardType: TextInputType.phone,
-                ),
-                const CustomTextFormField(
-                  maxLines: 1,
-                  labelText: 'بازو',
-                  keyboardType: TextInputType.phone,
-                ),
-                const CustomTextFormField(
-                  maxLines: 1,
-                  labelText: 'چھاتی',
-                  keyboardType: TextInputType.phone,
+                Row(
+                  children: [
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'چھاتی',
+                      keyboardType: TextInputType.phone,
+                    ),
+                  ],
                 ),
 
                 ///Other Measurement Options for
@@ -172,9 +178,13 @@ class _OrderMeasurementCardState extends State<OrderMeasurementCard> {
                 const SizedBox(
                   height: 10,
                 ),
-                const CustomTextFormField(
-                  maxLines: 2,
-                  labelText: 'Special requirements',
+                Row(
+                  children: [
+                    const CustomTextFormField(
+                      maxLines: 2,
+                      labelText: 'Special requirements',
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 20,
@@ -200,18 +210,27 @@ class _OrderMeasurementCardState extends State<OrderMeasurementCard> {
                   height: 20,
                 ),
                 const CustomDropdown(
-                    dropDownTitle: 'Select Design Item',
-                    dropDownItemList: ['item 1', 'item 2'],
-                    title: 'Design Item',),
+                  dropDownTitle: 'Select Design Item',
+                  dropDownItemList: ['item 1', 'item 2'],
+                  title: 'Design Item',
+                ),
                 const CustomDropdown(
-                    dropDownTitle: 'Select Design Item First',
-                    dropDownItemList: ['item 1', 'item 2'],
-                    title: 'Design Item First',),
+                  dropDownTitle: 'Select Design Item First',
+                  dropDownItemList: ['item 1', 'item 2'],
+                  title: 'Design Item First',
+                ),
                 const CustomDropdown(
-                    dropDownTitle: 'Select Design Option First',
-                    dropDownItemList: ['item 1', 'item 2'],
-                    title: 'Design Option First',),
-               const CustomTextFormField(maxLines: 1, ),
+                  dropDownTitle: 'Select Design Option First',
+                  dropDownItemList: ['item 1', 'item 2'],
+                  title: 'Design Option First',
+                ),
+                Row(
+                  children: [
+                    const CustomTextFormField(
+                      maxLines: 1,
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
