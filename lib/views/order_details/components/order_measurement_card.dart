@@ -67,7 +67,7 @@ class OrderMeasurementCard extends StatelessWidget {
                   children: [
                     CustomTextFormField(
                       maxLines: 1,
-                      labelText: 'لمبائی',
+                      labelText: 'قمیض لمبائی ',
                       keyboardType: TextInputType.phone,
                     ),
                     CustomTextFormField(
@@ -89,9 +89,70 @@ class OrderMeasurementCard extends StatelessWidget {
                       labelText: 'چھاتی',
                       keyboardType: TextInputType.phone,
                     ),
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'گلا',
+                      keyboardType: TextInputType.phone,
+                    ),
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'ہپ',
+                      keyboardType: TextInputType.phone,
+                    ),
                   ],
                 ),
-
+                Row(
+                  children: [
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'کندھا',
+                      keyboardType: TextInputType.phone,
+                    ),
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'کہنی سے',
+                      keyboardType: TextInputType.phone,
+                    ),
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'کف لمبائی',
+                      keyboardType: TextInputType.phone,
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'شلوار لمبائی',
+                      keyboardType: TextInputType.phone,
+                    ),
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'شلوار گھیرا',
+                      keyboardType: TextInputType.phone,
+                    ),
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'پائنچہ',
+                      keyboardType: TextInputType.phone,
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'آسن',
+                      keyboardType: TextInputType.phone,
+                    ),
+                    CustomTextFormField(
+                      maxLines: 1,
+                      labelText: 'ٹراوزرا',
+                      keyboardType: TextInputType.phone,
+                    ),
+                  ],
+                ),
                 ///Other Measurement Options for
                 const SizedBox(
                   height: 20,

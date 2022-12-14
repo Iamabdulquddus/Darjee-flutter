@@ -8,6 +8,7 @@ import '../../constants/style.dart';
 import '../../responsive.dart';
 import '../content.dart';
 import 'components/orders/today_delivery_order.dart';
+import 'components/orders/today_delivery_trial.dart';
 import 'components/orders/today_orders.dart';
 import 'components/orders/today_trail_order.dart';
 import 'components/orders/upcoming_delivery_trail_orders.dart';
@@ -19,7 +20,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: WidgetWithSidebar(context, cardOfUserTable(context, DashboardView())),
+      body: WidgetWithSidebar(context, cardOfUserTable(context, const DashboardView())),
     );
   }
 }
@@ -55,34 +56,34 @@ class _DashboardViewState extends State<DashboardView> {
                           children: [
                             Container(
                                 width: size.width / 3,
-                                color: Color(0xffaaa9ad),
-                                padding: EdgeInsets.all(10),
+                                color: const Color(0xffaaa9ad),
+                                padding: const EdgeInsets.all(10),
                                 child: Text(
                                   'Today\'s Order',
-                                  style: MyTextStyles.headingLargeBlack,
+                                  style: MyTextStyles.headingSmallPrimary,
                                   overflow: TextOverflow.ellipsis,
                                 )),
                             SizedBox(
                                 width: size.width / 3,
                                 height: 300,
-                                child: TodayOrders()),
+                                child: const TodayOrders()),
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   vertical: wDefaultPadding / 2),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 10),
                                 ),
                                 onPressed: () {
                                   //TODO: navigation to all orders form dashboard
                                 },
-                                child: Text("View all"),
+                                child: const Text("View all"),
                               ),
                             ),
                           ],
                         )),
-                    SizedBox(width: wDefaultPadding,),
+                    const SizedBox(width: wDefaultPadding,),
                     Expanded(
                       child: Container(
                         height: 400,
@@ -99,37 +100,47 @@ class _DashboardViewState extends State<DashboardView> {
                                     maxWidth: size.width
                                   ),
                                     // width: size.width / 2.55,
-                                    color: Color(0xffaaa9ad),
-                                    padding: EdgeInsets.all(10),
+                                    color: const Color(0xffaaa9ad),
+                                    padding: const EdgeInsets.all(10),
                                     child: Row(
                                       children: [
                                         SizedBox(
                                           width: size.width / 3,
                                           child: Text(
                                             'Upcoming delivery and Trail Orders',
-                                            style: MyTextStyles.headingLargeBlack,
+                                            style: MyTextStyles.headingSmallPrimary,
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
                                       ],
                                     )),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                   // width: size.width / 2.55,
                                   height: 300,
-                                  child: UpComingDeliveryTrailOrders()),
+                                  child: DefaultTabController(
+                                    length: 3,
+                                    child: TabBarView(
+                                        children: [
+                                          Icon(Icons.home, size: 100),
+                                          Icon(Icons.dashboard, size: 100),
+                                          Icon(Icons.settings, size: 100),
+                                        ],
+                                      ),
+
+                                  )),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: wDefaultPadding / 2),
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                         horizontal: 20, vertical: 10),
                                   ),
                                   onPressed: () {
                                     //TODO: navigation to all orders form dashboard
                                   },
-                                  child: Text("View all"),
+                                  child: const Text("View all"),
                                 ),
                               ),
                             ],
@@ -150,33 +161,33 @@ class _DashboardViewState extends State<DashboardView> {
                           children: [
                             Container(
                                 width: size.width / 1.2,
-                                color: Color(0xffaaa9ad),
-                                padding: EdgeInsets.all(10),
+                                color: const Color(0xffaaa9ad),
+                                padding: const EdgeInsets.all(10),
                                 child: Text(
                                   'Today\'s Order',
-                                  style: MyTextStyles.subHeadingBoldBlack,
+                                  style: MyTextStyles.subHeadingBoldPrimary,
                                 )),
                             SizedBox(
                                 width: size.width / 1.2,
                                 height: 300,
-                                child: TodayOrders()),
+                                child: const TodayOrders()),
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   vertical: wDefaultPadding / 2),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 10),
                                 ),
                                 onPressed: () {
                                   //TODO: navigation to all orders form dashboard
                                 },
-                                child: Text("View all"),
+                                child: const Text("View all"),
                               ),
                             ),
                           ],
                         )),
-                    SizedBox(height: wDefaultPadding,),
+                    const SizedBox(height: wDefaultPadding,),
                     Container(
                         decoration: BoxDecoration(
                           color: Colors.grey.shade50,
@@ -187,35 +198,35 @@ class _DashboardViewState extends State<DashboardView> {
                           children: [
                             Container(
                                 width: size.width / 1.2,
-                                color: Color(0xffaaa9ad),
-                                padding: EdgeInsets.all(10),
+                                color: const Color(0xffaaa9ad),
+                                padding: const EdgeInsets.all(10),
                                 child: Text(
                                   'Upcoming delivery and Trail Orders',
-                                  style: MyTextStyles.subHeadingBoldBlack,
+                                  style: MyTextStyles.subHeadingBoldPrimary,
                                 )),
                             SizedBox(
                                 width: size.width / 1.2,
                                 height: 300,
-                                child: UpComingDeliveryTrailOrders()),
+                                child: const UpComingDeliveryTrailOrders()),
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   vertical: wDefaultPadding / 2),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 20, vertical: 10),
                                 ),
                                 onPressed: () {
                                   //TODO: navigation to all orders form dashboard
                                 },
-                                child: Text("View all"),
+                                child: const Text("View all"),
                               ),
                             ),
                           ],
                         )),
                   ],
                 ),
-          SizedBox(height: wDefaultPadding +10,),
+          const SizedBox(height: wDefaultPadding +10,),
           Responsive.isDesktop(context)
               ? Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -230,33 +241,33 @@ class _DashboardViewState extends State<DashboardView> {
                     children: [
                       Container(
                           width: size.width / 3,
-                          color: Color(0xffaaa9ad),
-                          padding: EdgeInsets.all(10),
+                          color: const Color(0xffaaa9ad),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             'Today\'s Trail Order',
-                            style: MyTextStyles.headingLargeBlack,
+                            style: MyTextStyles.headingSmallPrimary,
                           )),
                       SizedBox(
                           width: size.width / 3,
                           height: 300,
-                          child: TodayTrailOrders()),
+                          child: const TodayTrailOrders()),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: wDefaultPadding / 2),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                           ),
                           onPressed: () {
                             //TODO: navigation to all orders form dashboard
                           },
-                          child: Text("View all"),
+                          child: const Text("View all"),
                         ),
                       ),
                     ],
                   )),
-              SizedBox(width: wDefaultPadding,),
+              const SizedBox(width: wDefaultPadding,),
               Expanded(
                 child: Container(
                     height: 400,
@@ -273,18 +284,18 @@ class _DashboardViewState extends State<DashboardView> {
                                   maxWidth: size.width
                               ),
                               // width: size.width / 2.55,
-                              color: Color(0xffaaa9ad),
-                              padding: EdgeInsets.all(10),
+                              color: const Color(0xffaaa9ad),
+                              padding: const EdgeInsets.all(10),
                               child: Row(
                                 children: [
                                   Text(
                                     'Today\'s delivery Orders',
-                                    style: MyTextStyles.headingLargeBlack,
+                                    style: MyTextStyles.headingSmallPrimary,
                                   ),
                                 ],
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           // width: size.width / 2.55,
                             height: 300,
                             child: TodayDeliveryOrders()),
@@ -293,13 +304,13 @@ class _DashboardViewState extends State<DashboardView> {
                               vertical: wDefaultPadding / 2),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 10),
                             ),
                             onPressed: () {
                               //TODO: navigation to all orders form dashboard
                             },
-                            child: Text("View all"),
+                            child: const Text("View all"),
                           ),
                         ),
                       ],
@@ -320,33 +331,33 @@ class _DashboardViewState extends State<DashboardView> {
                     children: [
                       Container(
                           width: size.width / 1.2,
-                          color: Color(0xffaaa9ad),
-                          padding: EdgeInsets.all(10),
+                          color: const Color(0xffaaa9ad),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             'Today\'s Trail Order',
-                            style: MyTextStyles.subHeadingBoldBlack,
+                            style: MyTextStyles.subHeadingBoldPrimary,
                           )),
                       SizedBox(
                           width: size.width / 1.2,
                           height: 300,
-                          child: TodayTrailOrders()),
+                          child: const TodayTrailOrders()),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: wDefaultPadding / 2),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                           ),
                           onPressed: () {
                             //TODO: navigation to all orders form dashboard
                           },
-                          child: Text("View all"),
+                          child: const Text("View all"),
                         ),
                       ),
                     ],
                   )),
-              SizedBox(height: wDefaultPadding,),
+              const SizedBox(height: wDefaultPadding,),
               Container(
                   decoration: BoxDecoration(
                     color: Colors.grey.shade50,
@@ -357,28 +368,28 @@ class _DashboardViewState extends State<DashboardView> {
                     children: [
                       Container(
                           width: size.width / 1.2,
-                          color: Color(0xffaaa9ad),
-                          padding: EdgeInsets.all(10),
+                          color: const Color(0xffaaa9ad),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             'Today\'s delivery Orders',
-                            style: MyTextStyles.subHeadingBoldBlack,
+                            style: MyTextStyles.subHeadingBoldPrimary,
                           )),
                       SizedBox(
                           width: size.width / 1.2,
                           height: 300,
-                          child: TodayDeliveryOrders()),
+                          child: const TodayDeliveryOrders()),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: wDefaultPadding / 2),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                           ),
                           onPressed: () {
                             //TODO: navigation to all orders form dashboard
                           },
-                          child: Text("View all"),
+                          child: const Text("View all"),
                         ),
                       ),
                     ],

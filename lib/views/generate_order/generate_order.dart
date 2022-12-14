@@ -23,8 +23,8 @@ class _GenerateOrderState extends State<GenerateOrder> {
         cardOfUserTable(
           context,
           Column(
-            children: [
-              const GenerateOrderForm(),
+            children: const [
+               GenerateOrderForm(),
               SizedBox(height: 20),
               OrderDetailForm(),
             ],
