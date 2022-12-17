@@ -108,6 +108,12 @@ class Display extends StatelessWidget {
                 },
                 child: const Text('Assigned Orders'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(MyRoutes.getDeliveredToShop());
+                },
+                child: const Text('Delivered To Shop'),
+              ),
             ],
           ),
         ),

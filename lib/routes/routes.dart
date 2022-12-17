@@ -10,6 +10,7 @@ import '../views/configuration/worker_type/worker_type.dart';
 import '../views/customer/customer.dart';
 import '../views/dashboard/dashboard.dart';
 import '../views/dryclean_orders/assigned_orders/assigned_order.dart';
+import '../views/dryclean_orders/delivered_to_shop/delivered_to_shop.dart';
 import '../views/dryclean_orders/unassigned_orders/unassigned_orders.dart';
 import '../views/fabric/article_title/article_title.dart';
 import '../views/fabric/brand/brand.dart';
@@ -46,6 +47,7 @@ class MyRoutes {
   static String unassignedOrders = '/unassigned-orders';
   static String assignedOrders = '/assigned-orders';
   static String completeOrders = '/complete-orders';
+  static String deliveredToShop = '/delivered-to-shop';
 
 
   static String getDisplay() => display;
@@ -68,6 +70,7 @@ class MyRoutes {
   static String getUnassignedOrders() => unassignedOrders;
   static String getAssignedOrders() => assignedOrders;
   static String getCompleteOrders() => completeOrders;
+  static String getDeliveredToShop() => deliveredToShop;
 
 
   /// *********************GetPage************************
@@ -190,6 +193,12 @@ class MyRoutes {
     GetPage(
       name: completeOrders,
       page: () => CompleteOrders(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: deliveredToShop,
+      page: () => DeliveredToShop(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),
