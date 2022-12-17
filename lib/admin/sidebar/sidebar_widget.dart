@@ -14,10 +14,9 @@ List<CDM> sidebarList = [
     icon: Icons.dashboard,
     submenus: [
       subList(
-        subTitle: 'Dashboard',
-        subIcon: Icons.dashboard_customize_rounded,
-        myRoute: MyRoutes.getDashboard()
-      ),
+          subTitle: 'Dashboard',
+          subIcon: Icons.dashboard_customize_rounded,
+          myRoute: MyRoutes.getDashboard()),
     ],
   ),
   CDM(
@@ -25,10 +24,9 @@ List<CDM> sidebarList = [
     icon: Icons.supervised_user_circle,
     submenus: [
       subList(
-        subTitle: 'Customer',
-        subIcon: Icons.admin_panel_settings,
-        myRoute: MyRoutes.getCustomer()
-      ),
+          subTitle: 'Customer',
+          subIcon: Icons.admin_panel_settings,
+          myRoute: MyRoutes.getCustomer()),
     ],
   ),
   CDM(
@@ -36,28 +34,28 @@ List<CDM> sidebarList = [
     icon: Icons.local_offer,
     submenus: [
       subList(
-          subTitle: 'Measurement Title',
-          subIcon: Icons.list,
+        subTitle: 'Measurement Title',
+        subIcon: Icons.list,
         myRoute: MyRoutes.getMeasurementTitle(),
       ),
       subList(
-          subTitle: 'Measurement Book',
-          subIcon: Icons.create,
+        subTitle: 'Measurement Book',
+        subIcon: Icons.create,
         myRoute: MyRoutes.getMeasurementBook(),
       ),
       subList(
-          subTitle: 'Design Options',
-          subIcon: Icons.create,
+        subTitle: 'Design Options',
+        subIcon: Icons.create,
         myRoute: MyRoutes.getDesignOptions(),
       ),
       subList(
-          subTitle: 'Worker Type',
-          subIcon: Icons.create,
+        subTitle: 'Worker Type',
+        subIcon: Icons.create,
         myRoute: MyRoutes.getWorkerType(),
       ),
       subList(
-          subTitle: 'Worker Salary',
-          subIcon: Icons.create,
+        subTitle: 'Worker Salary',
+        subIcon: Icons.create,
         myRoute: MyRoutes.getWorkerSalary(),
       ),
     ],
@@ -67,29 +65,119 @@ List<CDM> sidebarList = [
     icon: Icons.local_offer,
     submenus: [
       subList(
-          subTitle: 'Add Article Title',
-          subIcon: Icons.list,
+        subTitle: 'Add Article Title',
+        subIcon: Icons.list,
         myRoute: MyRoutes.getArticleTitle(),
       ),
       subList(
-          subTitle: 'Add Brand',
-          subIcon: Icons.create,
+        subTitle: 'Add Brand',
+        subIcon: Icons.create,
         myRoute: MyRoutes.getBrandTitle(),
       ),
       subList(
-          subTitle: 'Fabric Item',
-          subIcon: Icons.create,
+        subTitle: 'Fabric Item',
+        subIcon: Icons.create,
         myRoute: MyRoutes.getFabricItem(),
       ),
       subList(
-          subTitle: 'Worker Type',
-          subIcon: Icons.create,
+        subTitle: 'Worker Type',
+        subIcon: Icons.create,
         myRoute: MyRoutes.getWorkerType(),
       ),
       subList(
-          subTitle: 'Worker Salary',
-          subIcon: Icons.create,
+        subTitle: 'Worker Salary',
+        subIcon: Icons.create,
         myRoute: MyRoutes.getWorkerSalary(),
+      ),
+    ],
+  ),
+  CDM(
+    title: 'Generate Order',
+    icon: Icons.local_offer,
+    submenus: [
+      subList(
+        subTitle: 'Generate Order',
+        subIcon: Icons.list,
+        myRoute: MyRoutes.getGenerateOrder(),
+      ),
+    ],
+  ),
+  CDM(
+    title: 'Stitching Order',
+    icon: Icons.local_offer,
+    submenus: [
+      subList(
+        subTitle: 'Order',
+        subIcon: Icons.list,
+        myRoute: MyRoutes.getStitchingOrders(),
+      ),
+    ],
+  ),
+  CDM(
+    title: 'Dry Clean Order',
+    icon: Icons.local_offer,
+    submenus: [
+      subList(
+        subTitle: 'Un-Assigned Order',
+        subIcon: Icons.list,
+        myRoute: MyRoutes.getUnassignedOrders(),
+      ),
+      subList(
+        subTitle: 'Assigned Order',
+        subIcon: Icons.list,
+        myRoute: MyRoutes.getAssignedOrders(),
+      ),
+      subList(
+        subTitle: 'Completed Orders',
+        subIcon: Icons.list,
+        myRoute: MyRoutes.getCompleteOrders(),
+      ),
+      subList(
+        subTitle: 'Delivered to shop Orders',
+        subIcon: Icons.list,
+        myRoute: MyRoutes.getDeliveredToShop(),
+      ),
+      subList(
+        subTitle: 'Delivered to Customer Orders',
+        subIcon: Icons.list,
+        // myRoute: MyRoutes.getDeliveredToShop(),
+      ),
+    ],
+  ),
+  CDM(
+    title: 'Total Orders',
+    icon: Icons.local_offer,
+    submenus: [
+      subList(
+        subTitle: 'Total Orders',
+        subIcon: Icons.list,
+        // myRoute: MyRoutes.getUnassignedOrders(),
+      ),
+    ],
+  ),
+  CDM(
+    title: 'Accounts',
+    icon: Icons.local_offer,
+    submenus: [
+      subList(
+        subTitle: 'Vendor-Customer Transaction',
+        subIcon: Icons.list,
+        // myRoute: MyRoutes.getUnassignedOrders(),
+      ),
+      subList(
+        subTitle: 'Workers Salary (Monthly)',
+        subIcon: Icons.list,
+        // myRoute: MyRoutes.getUnassignedOrders(),
+      ),
+      subList(
+        subTitle: 'Workers Salary (Commision)',
+        subIcon: Icons.list,
+        // myRoute: MyRoutes.getUnassignedOrders(),
+      ),
+      subList(
+        subTitle: 'Other Shop expenses',
+        subIcon: Icons.list,
+        // myRoute: MyRoutes.getUnassignedOrders(),
       ),
     ],
   ),
@@ -116,7 +204,8 @@ Row WidgetWithSidebar(BuildContext context, Widget widget) {
                     desktop: headerTitle(wDefaultPadding * 4)),
               ),
             ),
-            Divider(thickness: 2,
+            Divider(
+              thickness: 2,
               color: Colors.grey,
             ),
             Expanded(
@@ -133,26 +222,27 @@ Row WidgetWithSidebar(BuildContext context, Widget widget) {
 Widget headerTitle(double DefaultPadding) {
   return Obx(
     () => Padding(
-      padding: EdgeInsets.only(left: DefaultPadding, ),
+      padding: EdgeInsets.only(
+        left: DefaultPadding,
+      ),
       child: RichText(
-          text: TextSpan(
-        style: const TextStyle(
-          fontSize: wDefaultPadding,
-          color: Colors.black,
+        text: TextSpan(
+          style: const TextStyle(
+            fontSize: wDefaultPadding,
+            color: Colors.black,
+          ),
+          children: <TextSpan>[
+            TextSpan(
+                text: sidebarList[sidebarController.selectedMenuIndex.value]
+                    .title,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+            TextSpan(
+                text:
+                    " > ${sidebarList[sidebarController.selectedMenuIndex.value].submenus[sidebarController.selectedSubmenuIndex.value].subTitle}", ),
+          ],
         ),
-        children: <TextSpan>[
-          TextSpan(
-              text:
-                  sidebarList[sidebarController.selectedMenuIndex.value].title,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14)),
-          TextSpan(
-              text:
-                  " > ${sidebarList[sidebarController.selectedMenuIndex.value].submenus[sidebarController.selectedSubmenuIndex.value].subTitle}"),
-
-        ],
-      )),
+      ),
     ),
   );
 }
@@ -160,7 +250,7 @@ Widget headerTitle(double DefaultPadding) {
 Widget SidebarOnDisktop(BuildContext context) {
   return Container(
     width: 200,
-    color: Colors.black,
+    color: primary,
     child: Column(
       children: [
         SidebarLogo(logo, 38.0),
@@ -229,8 +319,9 @@ ListView ListItem() {
       itemBuilder: (context, index) {
         return Container(
           padding: EdgeInsets.all(2),
-          color: Colors.black,
+          color: primary,
           child: ExpansionTile(
+            iconColor: Colors.white,
             key: Key(index.toString()),
             initiallyExpanded:
                 index == sidebarController.selectedMenuIndex.value,
@@ -261,9 +352,9 @@ ListView ListItem() {
 
 Widget onMobileSidebar(BuildContext context) {
   return AnimatedContainer(
-    duration: Duration(seconds: 1),
+    duration: const Duration(seconds: 1),
     width: 85,
-    color: Colors.black,
+    color: primary,
     child: Column(
       children: [
         SidebarLogo(logo, 21),
@@ -377,7 +468,7 @@ Widget subManuButton(int menu, int submenu, subList subManu, bool bool) {
               child: Text(
                 subManu.subTitle,
                 style: TextStyle(
-                  fontSize: bool ? 17 : 14,
+                  fontSize: bool ? 17 : 12,
                   color: bool ? Colors.white : Colors.grey,
                   fontWeight: FontWeight.bold,
                 ),

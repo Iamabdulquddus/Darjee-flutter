@@ -118,17 +118,7 @@ class _DashboardViewState extends State<DashboardView> {
                               const SizedBox(
                                   // width: size.width / 2.55,
                                   height: 300,
-                                  child: DefaultTabController(
-                                    length: 3,
-                                    child: TabBarView(
-                                        children: [
-                                          Icon(Icons.home, size: 100),
-                                          Icon(Icons.dashboard, size: 100),
-                                          Icon(Icons.settings, size: 100),
-                                        ],
-                                      ),
-
-                                  )),
+                                  child: TodayDeliveryOrders(),),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: wDefaultPadding / 2),

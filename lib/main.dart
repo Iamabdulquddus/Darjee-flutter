@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Palette.myColors,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: MyRoutes.getDisplay(),
+      initialRoute: MyRoutes.getDashboard(),
       getPages: MyRoutes.appRoutes(),
     );
   }
