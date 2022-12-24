@@ -24,7 +24,7 @@ class Palette {
 
 const wDefaultPadding = 20.0;
 const primary = Color(0xff00144F);
-const tertiary = Color(0xff396eb0);
+const tertiary = Colors.amber;
 const secondary = Color(0xffBCC2C8);
 const lightColor = Color(0xffF1F5F9);
 const wWhiteColor = Colors.white;

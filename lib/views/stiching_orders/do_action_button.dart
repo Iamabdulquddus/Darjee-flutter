@@ -1,15 +1,15 @@
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'dart:math';
 import 'package:responsive_table/responsive_table.dart';
 import '../../../constants/style.dart';
 import '../../admin/sidebar/sidebar_widget.dart';
-import '../../routes/routes.dart';
+import '../../widgets/popup_dialog_box.dart';
 import '../content.dart';
 
-class StitchingOrders extends StatelessWidget {
-  const StitchingOrders({Key? key}) : super(key: key);
+class StitchingOrdersAction extends StatelessWidget {
+  const StitchingOrdersAction({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class StitchingOrders extends StatelessWidget {
       body: WidgetWithSidebar(
           context, cardOfUserTable(context, Column(
         children: [
-          StitchingOrdersList()
+          StitchingOrdersActionsList()
         ],
       ))),
     );
@@ -27,13 +27,13 @@ class StitchingOrders extends StatelessWidget {
 
 
 
-class StitchingOrdersList extends StatefulWidget {
-  const StitchingOrdersList({Key? key}) : super(key: key);
+class StitchingOrdersActionsList extends StatefulWidget {
+  const StitchingOrdersActionsList({Key? key}) : super(key: key);
   @override
-  State<StitchingOrdersList> createState() => _StitchingOrdersListState();
+  State<StitchingOrdersActionsList> createState() => _StitchingOrdersActionsListState();
 }
 
-class _StitchingOrdersListState extends State<StitchingOrdersList> {
+class _StitchingOrdersActionsListState extends State<StitchingOrdersActionsList> {
   late List<DatatableHeader> _headers;
 
   final List<int> _perPages = [10, 20, 50, 100];
@@ -66,14 +66,9 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
     for (var data in source) {
       temps.add({
         "id": i,
-        "name": "Customer Name $i",
-        "date": "12/05/2020",
-        "status": "Medium priority",
-        "delivery": "12/05/2022",
-        "bill": "Rs 3000 /-" ,
-        "details": "",
+        "item": "Customer Name $i",
         "actions": "",
-        "progress": "",
+        "status": "",
       });
       i++;
     }
@@ -90,7 +85,7 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
     setState(() => _isLoading = true);
     Future.delayed(const Duration(seconds: 3)).then((value) {
       _sourceOriginal.clear();
-      _sourceOriginal.addAll(_generateData(n: random.nextInt(1000)));
+      _sourceOriginal.addAll(_generateData(n: random.nextInt(10000)));
       _sourceFiltered = _sourceOriginal;
       _total = _sourceFiltered.length;
       _source = _sourceFiltered.getRange(0, _currentPerPage!).toList();
@@ -147,58 +142,20 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
           show: true,
           sortable: true,
           textAlign: TextAlign.left),
+
       DatatableHeader(
-          text: "Customer Name",
-          value: "name",
+          text: "Item Name",
+          value: "item",
           show: true,
-          flex: 2,
           sortable: true,
-          editable: true,
+          flex: 5,
           textAlign: TextAlign.left),
-      DatatableHeader(
-          text: "Order Date",
-          value: "date",
-          show: true,
-          sortable: false,
-          textAlign: TextAlign.left),
-      DatatableHeader(
-          text: "Order Status",
-          value: "status",
-          show: true,
-          sortable: true,
-          textAlign: TextAlign.left),
-      DatatableHeader(
-          text: "Delivery Date",
-          value: "delivery",
-          show: true,
-          sortable: true,
-          textAlign: TextAlign.center),
-      DatatableHeader(
-          text: "Total Bill",
-          value: "bill",
-          show: true,
-          sortable: true,
-          textAlign: TextAlign.center),
-      DatatableHeader(
-          text: "Details",
-          value: "details",
-          show: true,
-          sortable: false,
-          sourceBuilder: (value, row) {
-            return Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: lightColor),
-                child: Text("Details", style: MyTextStyles.xSmallPrimary,),
-                onPressed: () {},
-              ),
-            );
-          },
-          textAlign: TextAlign.center),
+
       DatatableHeader(
           text: "Actions",
           value: "actions",
           show: true,
+          flex: 2,
           sortable: false,
           sourceBuilder: (value, row) {
             return Padding(
@@ -206,27 +163,50 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
               child: ElevatedButton(
                 child: Text("Actions", style: MyTextStyles.xSmallWhite,),
                 onPressed: () {
-                  Get.toNamed(MyRoutes.getStitchingOrdersAction());
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return PopupDialogBox(
+                            title: 'Choose an option',
+                            options: ['Option 1', 'Option 2'],
+                            onOptionSelected: (option) {
+
+                            },
+                            dropDownTitle: 'Person Name', chargedPrice: '500',
+                          );
+                        },
+                      );
+                    },
+                  );
                 },
               ),
             );
           },
           textAlign: TextAlign.center),
       DatatableHeader(
-          text: "Progress",
-          value: "progress",
+          text: "Status",
+          value: "status",
           show: true,
+          flex: 2,
           sortable: false,
           sourceBuilder: (value, row) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: secondary),
-                  child: Text("Un-Completed", style: MyTextStyles.xSmallBlack,),
-                  onPressed: () {
-
-                  },
+            return Column(
+              children: [
+                Container(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: lightColor,),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('New', style: MyTextStyles.xSmallPrimary,),
                 ),
+                SizedBox(height: 3,),
+                Container(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: lightColor,),
+
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('person name', style: MyTextStyles.xSmallPrimary,),
+                ),
+              ],
             );
           },
           textAlign: TextAlign.center),
@@ -260,7 +240,7 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
                 color: Colors.white,
               ),
               Text(
-                '  Completed Orders',
+                '  Orders Items',
                 style: MyTextStyles.headingxSmallBoldWhite,
               ),
             ],

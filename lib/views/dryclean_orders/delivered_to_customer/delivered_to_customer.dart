@@ -1,39 +1,38 @@
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'dart:math';
 import 'package:responsive_table/responsive_table.dart';
+import '../../../admin/sidebar/sidebar_widget.dart';
 import '../../../constants/style.dart';
-import '../../admin/sidebar/sidebar_widget.dart';
-import '../../routes/routes.dart';
-import '../content.dart';
+import '../../content.dart';
 
-class StitchingOrders extends StatelessWidget {
-  const StitchingOrders({Key? key}) : super(key: key);
+class DeliveredToCustomer extends StatelessWidget {
+  const DeliveredToCustomer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: WidgetWithSidebar(
-          context, cardOfUserTable(context, Column(
+        context, cardOfUserTable(context, Column(
         children: [
-          StitchingOrdersList()
+          DeliveredToCustomerList()
         ],
-      ))),
+      ),),),
     );
   }
 }
 
 
 
-class StitchingOrdersList extends StatefulWidget {
-  const StitchingOrdersList({Key? key}) : super(key: key);
+class DeliveredToCustomerList extends StatefulWidget {
+  const DeliveredToCustomerList({Key? key}) : super(key: key);
   @override
-  State<StitchingOrdersList> createState() => _StitchingOrdersListState();
+  State<DeliveredToCustomerList> createState() => _DeliveredToCustomerListState();
 }
 
-class _StitchingOrdersListState extends State<StitchingOrdersList> {
+class _DeliveredToCustomerListState extends State<DeliveredToCustomerList> {
   late List<DatatableHeader> _headers;
 
   final List<int> _perPages = [10, 20, 50, 100];
@@ -66,14 +65,15 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
     for (var data in source) {
       temps.add({
         "id": i,
+        "order_id": i*2,
         "name": "Customer Name $i",
+        "assigned": "ali dry cleaner" ,
         "date": "12/05/2020",
-        "status": "Medium priority",
-        "delivery": "12/05/2022",
+        "type": "no",
+        "book_no": "3426",
         "bill": "Rs 3000 /-" ,
         "details": "",
         "actions": "",
-        "progress": "",
       });
       i++;
     }
@@ -90,7 +90,7 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
     setState(() => _isLoading = true);
     Future.delayed(const Duration(seconds: 3)).then((value) {
       _sourceOriginal.clear();
-      _sourceOriginal.addAll(_generateData(n: random.nextInt(1000)));
+      _sourceOriginal.addAll(_generateData(n: random.nextInt(10000)));
       _sourceFiltered = _sourceOriginal;
       _total = _sourceFiltered.length;
       _source = _sourceFiltered.getRange(0, _currentPerPage!).toList();
@@ -148,6 +148,12 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
           sortable: true,
           textAlign: TextAlign.left),
       DatatableHeader(
+          text: "Order ID",
+          value: "order_id",
+          show: true,
+          sortable: true,
+          textAlign: TextAlign.left),
+      DatatableHeader(
           text: "Customer Name",
           value: "name",
           show: true,
@@ -156,23 +162,31 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
           editable: true,
           textAlign: TextAlign.left),
       DatatableHeader(
+          text: "Assigned Dry Cleaner",
+          value: "assigned",
+          show: true,
+          flex: 2,
+          sortable: true,
+          textAlign: TextAlign.center),
+      DatatableHeader(
           text: "Order Date",
           value: "date",
           show: true,
           sortable: false,
           textAlign: TextAlign.left),
       DatatableHeader(
-          text: "Order Status",
-          value: "status",
+          text: "Order Type",
+          value: "type",
           show: true,
           sortable: true,
           textAlign: TextAlign.left),
       DatatableHeader(
-          text: "Delivery Date",
-          value: "delivery",
+          text: "Order Book No",
+          value: "book_no",
           show: true,
           sortable: true,
           textAlign: TextAlign.center),
+
       DatatableHeader(
           text: "Total Bill",
           value: "bill",
@@ -205,31 +219,12 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 child: Text("Actions", style: MyTextStyles.xSmallWhite,),
-                onPressed: () {
-                  Get.toNamed(MyRoutes.getStitchingOrdersAction());
-                },
+                onPressed: () {},
               ),
             );
           },
           textAlign: TextAlign.center),
-      DatatableHeader(
-          text: "Progress",
-          value: "progress",
-          show: true,
-          sortable: false,
-          sourceBuilder: (value, row) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: secondary),
-                  child: Text("Un-Completed", style: MyTextStyles.xSmallBlack,),
-                  onPressed: () {
 
-                  },
-                ),
-            );
-          },
-          textAlign: TextAlign.center),
     ];
 
     _initializeData();
@@ -247,7 +242,7 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           decoration: const BoxDecoration(
-            color: primary,
+            color: secondary,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(10),
               topLeft: Radius.circular(10),
@@ -256,12 +251,12 @@ class _StitchingOrdersListState extends State<StitchingOrdersList> {
           child: Row(
             children: [
               const Icon(
-                Icons.person,
-                color: Colors.white,
+                Icons.menu_rounded,
+                color: Colors.black,
               ),
               Text(
-                '  Completed Orders',
-                style: MyTextStyles.headingxSmallBoldWhite,
+                '  Delivered To Shop Orders',
+                style: MyTextStyles.headingxSmallBoldBlack,
               ),
             ],
           ),

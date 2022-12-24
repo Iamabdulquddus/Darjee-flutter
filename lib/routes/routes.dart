@@ -20,6 +20,7 @@ import '../views/order_details/order_details.dart';
 import '../views/generate_order/generate_order.dart';
 import '../views/login/login.dart';
 import '../views/splash/splash.dart';
+import '../views/stiching_orders/do_action_button.dart';
 import '../views/stiching_orders/stiching_orders.dart';
 import 'display.dart';
 
@@ -48,6 +49,7 @@ class MyRoutes {
   static String assignedOrders = '/assigned-orders';
   static String completeOrders = '/complete-orders';
   static String deliveredToShop = '/delivered-to-shop';
+  static String stitchingOrdersAction = '/stitching-orders-action';
 
 
   static String getDisplay() => display;
@@ -71,6 +73,7 @@ class MyRoutes {
   static String getAssignedOrders() => assignedOrders;
   static String getCompleteOrders() => completeOrders;
   static String getDeliveredToShop() => deliveredToShop;
+  static String getStitchingOrdersAction() => stitchingOrdersAction;
 
 
   /// *********************GetPage************************
@@ -199,6 +202,12 @@ class MyRoutes {
     GetPage(
       name: deliveredToShop,
       page: () => DeliveredToShop(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: stitchingOrdersAction,
+      page: () => StitchingOrdersAction(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),
