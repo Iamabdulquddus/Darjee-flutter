@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'dropdown.dart';
 
 class PopupDialogBox extends StatefulWidget {
-  final String title, dropDownTitle ,chargedPrice;
-  final List<String> options;
-  final Function(String) onOptionSelected;
+  final String cutterStitcherTitle, dropDownTitle ,chargedPrice ,extraDropDownTitle, totalPrice, extraItemPrice;
+  final List<String> options,extraOptions ;
+  // final Function(String) onOptionSelected;
 
   const PopupDialogBox({
-    required this.title,
+    required this.cutterStitcherTitle,
+    required this.extraDropDownTitle,
     required this.options,
-    required this.onOptionSelected,
+    // required this.onOptionSelected,
     required this.dropDownTitle,
-    required this.chargedPrice,
+    required this.chargedPrice, required this.extraOptions, required this.totalPrice, required this.extraItemPrice,
   });
 
   @override
@@ -25,17 +26,18 @@ class _PopupDialogBoxState extends State<PopupDialogBox> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 50),
       child: AlertDialog(
-        title: Text(widget.title),
+        title: const Text('Assign Order'),
         content: Container(
           padding: EdgeInsets.all(10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 100,
+                height: 80,
                 child: CustomDropdown(
                   dropDownTitle: widget.dropDownTitle,
                   dropDownItemList: widget.options,
-                  title: '',
+                  title: widget.cutterStitcherTitle,
                 ),
               ),
               Padding(
@@ -43,13 +45,47 @@ class _PopupDialogBoxState extends State<PopupDialogBox> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Charged Price', style: MyTextStyles.headingxSmallBoldPrimary,),
+                    Text('Charged Price', style: MyTextStyles.subHeadingBoldPrimary,),
                     Text("Rs ${widget.chargedPrice} /-", style: MyTextStyles.regularPrimary,),
                   ],
                 ),
               ),
-
-
+              SizedBox(height: 30,),
+              SizedBox(
+                height: 80,
+                child: Center(
+                  child: CustomDropdown(
+                    dropDownTitle: widget.extraDropDownTitle,
+                    dropDownItemList: widget.extraOptions,
+                    title: 'Extra Desigin',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Charged Price', style: MyTextStyles.subHeadingBoldPrimary,),
+                    Text("Rs ${widget.extraItemPrice} /-", style: MyTextStyles.regularPrimary,),
+                  ],
+                ),
+              ),
+SizedBox(height: 30,),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: lightColor,
+                ),
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Total Price', style: MyTextStyles.headingxSmallBoldPrimary,),
+                    Text("Rs ${widget.totalPrice} /-", style: MyTextStyles.regularPrimary,),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

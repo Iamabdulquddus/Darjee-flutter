@@ -169,12 +169,13 @@ class _StitchingOrdersActionsListState extends State<StitchingOrdersActionsList>
                       return Builder(
                         builder: (BuildContext context) {
                           return PopupDialogBox(
-                            title: 'Choose an option',
+                            cutterStitcherTitle: 'Cutter',
                             options: ['Option 1', 'Option 2'],
-                            onOptionSelected: (option) {
-
-                            },
                             dropDownTitle: 'Person Name', chargedPrice: '500',
+
+                            extraOptions: ['Option 1', 'Option 2'],
+                            extraDropDownTitle: 'Person Name', extraItemPrice: '400',
+                            totalPrice: '900',
                           );
                         },
                       );
