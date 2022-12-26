@@ -192,7 +192,7 @@ class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementT
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           decoration: const BoxDecoration(
-            color: secondary,
+            color: primary,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(10),
               topLeft: Radius.circular(10),
@@ -202,11 +202,11 @@ class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementT
             children: [
               const Icon(
                 Icons.person,
-                color: Colors.black,
+                color: Colors.white,
               ),
               Text(
                 '  Customer List',
-                style: MyTextStyles.headingxSmallBoldBlack,
+                style: MyTextStyles.headingxSmallBoldWhite,
               ),
             ],
           ),

@@ -29,6 +29,7 @@ const secondary = Color(0xffBCC2C8);
 const lightColor = Color(0xffF1F5F9);
 const wWhiteColor = Colors.white;
 const wDarkBlackColor = Colors.black;
+const snowBackground = Color(0xffF9F9F9);
 
 class MyTextStyles {
 

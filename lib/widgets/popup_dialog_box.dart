@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'dropdown.dart';
 
 class PopupDialogBox extends StatefulWidget {
-  final String cutterStitcherTitle, dropDownTitle ,chargedPrice ,extraDropDownTitle, totalPrice, extraItemPrice;
-  final List<String> options,extraOptions ;
+  final String cutterStitcherTitle,
+      dropDownTitle,
+      chargedPrice,
+      extraDropDownTitle,
+      totalPrice,
+      extraItemPrice;
+  final List<String> options, extraOptions;
   // final Function(String) onOptionSelected;
 
   const PopupDialogBox({
@@ -13,7 +18,10 @@ class PopupDialogBox extends StatefulWidget {
     required this.options,
     // required this.onOptionSelected,
     required this.dropDownTitle,
-    required this.chargedPrice, required this.extraOptions, required this.totalPrice, required this.extraItemPrice,
+    required this.chargedPrice,
+    required this.extraOptions,
+    required this.totalPrice,
+    required this.extraItemPrice,
   });
 
   @override
@@ -45,12 +53,20 @@ class _PopupDialogBoxState extends State<PopupDialogBox> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Charged Price', style: MyTextStyles.subHeadingBoldPrimary,),
-                    Text("Rs ${widget.chargedPrice} /-", style: MyTextStyles.regularPrimary,),
+                    Text(
+                      'Charged Price',
+                      style: MyTextStyles.subHeadingBoldPrimary,
+                    ),
+                    Text(
+                      "Rs ${widget.chargedPrice} /-",
+                      style: MyTextStyles.regularPrimary,
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               SizedBox(
                 height: 80,
                 child: Center(
@@ -66,12 +82,20 @@ class _PopupDialogBoxState extends State<PopupDialogBox> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Charged Price', style: MyTextStyles.subHeadingBoldPrimary,),
-                    Text("Rs ${widget.extraItemPrice} /-", style: MyTextStyles.regularPrimary,),
+                    Text(
+                      'Charged Price',
+                      style: MyTextStyles.subHeadingBoldPrimary,
+                    ),
+                    Text(
+                      "Rs ${widget.extraItemPrice} /-",
+                      style: MyTextStyles.regularPrimary,
+                    ),
                   ],
                 ),
               ),
-SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
@@ -81,8 +105,14 @@ SizedBox(height: 30,),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Total Price', style: MyTextStyles.headingxSmallBoldPrimary,),
-                    Text("Rs ${widget.totalPrice} /-", style: MyTextStyles.regularPrimary,),
+                    Text(
+                      'Total Price',
+                      style: MyTextStyles.headingxSmallBoldPrimary,
+                    ),
+                    Text(
+                      "Rs ${widget.totalPrice} /-",
+                      style: MyTextStyles.regularPrimary,
+                    ),
                   ],
                 ),
               ),
@@ -93,9 +123,11 @@ SizedBox(height: 30,),
           Row(
             children: [
               Expanded(
-                child: ElevatedButton(onPressed: (){
-                  Navigator.pop(context);
-                }, child: Text('Save Selection')),
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('Save Selection')),
               ),
             ],
           ),

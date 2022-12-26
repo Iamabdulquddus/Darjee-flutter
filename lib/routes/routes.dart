@@ -22,13 +22,11 @@ import '../views/login/login.dart';
 import '../views/splash/splash.dart';
 import '../views/stiching_orders/do_action_button.dart';
 import '../views/stiching_orders/stiching_orders.dart';
-import 'display.dart';
 
 
 class MyRoutes {
 
   ///views routes***************
-  static String display = '/display';
   static String splash = '/splash';
   static String dashboard = '/dashboard';
   static String franchise = '/franchise';
@@ -52,7 +50,6 @@ class MyRoutes {
   static String stitchingOrdersAction = '/stitching-orders-action';
 
 
-  static String getDisplay() => display;
   static String getSplash() => splash;
   static String getDashboard() => dashboard;
   static String getFranchise() => franchise;
@@ -79,12 +76,7 @@ class MyRoutes {
   /// *********************GetPage************************
 
   static List<GetPage> appRoutes() => [
-    GetPage(
-      name: display,
-      page: () => Display(),
-      transition: Transition.leftToRightWithFade,
-      transitionDuration: Duration(milliseconds: 500),
-    ),
+
     GetPage(
       name: splash,
       page: () => Splash(),

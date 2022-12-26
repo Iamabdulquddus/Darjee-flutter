@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      color: snowBackground,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Palette.myColors,

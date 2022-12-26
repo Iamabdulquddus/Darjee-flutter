@@ -1,4 +1,5 @@
 
+import 'package:darjee_flutter/constants/style.dart';
 import 'package:flutter/material.dart';
 
 import '../../admin/sidebar/sidebar_widget.dart';
@@ -12,7 +13,7 @@ class Customer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: snowBackground,
       body: WidgetWithSidebar(
           context, cardOfUserTable(context, Column(
             children: [

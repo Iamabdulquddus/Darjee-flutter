@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../admin/sidebar/sidebar_widget.dart';
+import '../../constants/style.dart';
 import '../content.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -17,7 +18,7 @@ class _GenerateOrderState extends State<GenerateOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: snowBackground,
       body: WidgetWithSidebar(
         context,
         cardOfUserTable(

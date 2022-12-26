@@ -24,7 +24,7 @@ class ExtraDesignOptions extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             decoration: const BoxDecoration(
-              color: secondary,
+              color: primary,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(10),
                 topLeft: Radius.circular(10),
@@ -34,11 +34,11 @@ class ExtraDesignOptions extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.person,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 Text(
                   '  Add Extra Design Options',
-                  style: MyTextStyles.headingxSmallBoldBlack,
+                  style: MyTextStyles.headingxSmallBoldWhite,
                 ),
               ],
             ),

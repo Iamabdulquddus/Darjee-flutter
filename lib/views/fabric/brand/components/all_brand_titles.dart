@@ -175,152 +175,159 @@ class _AllBrandTitlesState extends State<AllBrandTitles> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-          decoration: const BoxDecoration(
-            color: secondary,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(10),
-              topLeft: Radius.circular(10),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(width: 1, color: secondary),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            decoration: const BoxDecoration(
+              color: primary,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(10),
+                topLeft: Radius.circular(10),
+              ),
+            ),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
+                Text(
+                  '  Brand Titles',
+                  style: MyTextStyles.headingxSmallBoldWhite,
+                ),
+              ],
             ),
           ),
-          child: Row(
-            children: [
-              const Icon(
-                Icons.person,
-                color: Colors.black,
-              ),
-              Text(
-                '  Brand Titles',
-                style: MyTextStyles.headingxSmallBoldBlack,
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 600,
-          child: Card(
-            elevation: 1,
-            shadowColor: Colors.black,
-            clipBehavior: Clip.none,
-            child: ResponsiveDatatable(
-              reponseScreenSizes: const [ScreenSize.xs],
-              actions: [
-                if (_isSearch)
-                  Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText:
-                          'Enter search term based on ${_searchKey.replaceAll(RegExp('[\\W_]+'), ' ').toUpperCase()}',
-                          prefixIcon: IconButton(
-                              icon: const Icon(Icons.cancel),
-                              onPressed: () {
-                                setState(() {
-                                  _isSearch = false;
-                                });
-                                _initializeData();
-                              }),
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.search),
-                            onPressed: () {},
+          SizedBox(
+            height: 600,
+            child: Card(
+              color: lightColor,
+              elevation: 1,
+              shadowColor: Colors.black,
+              clipBehavior: Clip.none,
+              child: ResponsiveDatatable(
+                reponseScreenSizes: const [ScreenSize.xs],
+                actions: [
+                  if (_isSearch)
+                    Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText:
+                            'Enter search term based on ${_searchKey.replaceAll(RegExp('[\\W_]+'), ' ').toUpperCase()}',
+                            prefixIcon: IconButton(
+                                icon: const Icon(Icons.cancel),
+                                onPressed: () {
+                                  setState(() {
+                                    _isSearch = false;
+                                  });
+                                  _initializeData();
+                                }),
+                            suffixIcon: IconButton(
+                              icon: const Icon(Icons.search),
+                              onPressed: () {},
+                            ),
                           ),
-                        ),
-                        onSubmitted: (value) {
-                          _filterData(value);
+                          onSubmitted: (value) {
+                            _filterData(value);
+                          },
+                        )),
+                  if (!_isSearch)
+                    TextButton(
+                        onPressed: () {
+                          setState(() {
+                            _isSearch = true;
+                          });
                         },
-                      )),
-                if (!_isSearch)
-                  TextButton(
-                      onPressed: () {
-                        setState(() {
-                          _isSearch = true;
-                        });
-                      },
-                      child: Row(
-                        children: [
-                          Icon(Icons.search),
-                          Text(' Search'),
-                        ],
-                      ))
-              ],
-              headers: _headers,
-              source: _source,
-              selecteds: _selecteds,
-              showSelect: _showSelect,
-              autoHeight: false,
-              expanded: _expanded,
-              sortAscending: _sortAscending,
-              // sortColumn: _sortColumn,
-              isLoading: _isLoading,
-              footers: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: const Text("Rows per page:"),
-                ),
-                if (_perPages.isNotEmpty)
+                        child: Row(
+                          children: [
+                            Icon(Icons.search),
+                            Text(' Search'),
+                          ],
+                        ))
+                ],
+                headers: _headers,
+                source: _source,
+                selecteds: _selecteds,
+                showSelect: _showSelect,
+                autoHeight: false,
+                expanded: _expanded,
+                sortAscending: _sortAscending,
+                // sortColumn: _sortColumn,
+                isLoading: _isLoading,
+                footers: [
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: DropdownButton<int>(
-                      value: _currentPerPage,
-                      items: _perPages
-                          .map((e) => DropdownMenuItem<int>(
-                        child: Text("$e"),
-                        value: e,
-                      ))
-                          .toList(),
-                      onChanged: (dynamic value) {
-                        setState(() {
-                          _currentPerPage = value;
-                          _currentPage = 1;
-                          _resetData();
-                        });
-                      },
-                      isExpanded: false,
+                    child: const Text("Rows per page:"),
+                  ),
+                  if (_perPages.isNotEmpty)
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: DropdownButton<int>(
+                        value: _currentPerPage,
+                        items: _perPages
+                            .map((e) => DropdownMenuItem<int>(
+                          child: Text("$e"),
+                          value: e,
+                        ))
+                            .toList(),
+                        onChanged: (dynamic value) {
+                          setState(() {
+                            _currentPerPage = value;
+                            _currentPage = 1;
+                            _resetData();
+                          });
+                        },
+                        isExpanded: false,
+                      ),
                     ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Text("$_currentPage - $_currentPerPage of $_total"),
                   ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Text("$_currentPage - $_currentPerPage of $_total"),
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.arrow_back_ios,
-                    size: 16,
+                  IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      size: 16,
+                    ),
+                    onPressed: _currentPage == 1
+                        ? null
+                        : () {
+                      var nextSet = _currentPage - _currentPerPage!;
+                      setState(() {
+                        _currentPage = nextSet > 1 ? nextSet : 1;
+                        _resetData(start: _currentPage - 1);
+                      });
+                    },
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                   ),
-                  onPressed: _currentPage == 1
-                      ? null
-                      : () {
-                    var nextSet = _currentPage - _currentPerPage!;
-                    setState(() {
-                      _currentPage = nextSet > 1 ? nextSet : 1;
-                      _resetData(start: _currentPage - 1);
-                    });
-                  },
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.arrow_forward_ios, size: 16),
-                  onPressed: _currentPage + _currentPerPage! - 1 > _total
-                      ? null
-                      : () {
-                    var nextSet = _currentPage + _currentPerPage!;
+                  IconButton(
+                    icon: const Icon(Icons.arrow_forward_ios, size: 16),
+                    onPressed: _currentPage + _currentPerPage! - 1 > _total
+                        ? null
+                        : () {
+                      var nextSet = _currentPage + _currentPerPage!;
 
-                    setState(() {
-                      _currentPage = nextSet < _total
-                          ? nextSet
-                          : _total - _currentPerPage!;
-                      _resetData(start: nextSet - 1);
-                    });
-                  },
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                )
-              ],
+                      setState(() {
+                        _currentPage = nextSet < _total
+                            ? nextSet
+                            : _total - _currentPerPage!;
+                        _resetData(start: nextSet - 1);
+                      });
+                    },
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

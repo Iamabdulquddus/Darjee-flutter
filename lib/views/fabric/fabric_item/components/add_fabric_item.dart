@@ -15,7 +15,7 @@ class AddFabricItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: Responsive.isDesktop(context)?620:1000,
+      height: Responsive.isDesktop(context)?650:1000,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: secondary),
         borderRadius: BorderRadius.circular(10),
@@ -25,7 +25,7 @@ class AddFabricItem extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             decoration: const BoxDecoration(
-              color: secondary,
+              color: primary,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(10),
                 topLeft: Radius.circular(10),
@@ -35,11 +35,11 @@ class AddFabricItem extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.person,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 Text(
                   '  Add Fabric Item Info',
-                  style: MyTextStyles.headingxSmallBoldBlack,
+                  style: MyTextStyles.headingxSmallBoldWhite,
                 ),
               ],
             ),
@@ -60,7 +60,7 @@ class AddFabricItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        height: 490,
+                        height: 520,
                         width: size.width / 3,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

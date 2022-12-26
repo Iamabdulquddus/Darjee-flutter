@@ -14,7 +14,7 @@ class AddWorkerSalary extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: 400,
+      height: 470,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: secondary),
         borderRadius: BorderRadius.circular(10),
@@ -24,7 +24,7 @@ class AddWorkerSalary extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             decoration: const BoxDecoration(
-              color: secondary,
+              color: primary,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(10),
                 topLeft: Radius.circular(10),
@@ -34,11 +34,11 @@ class AddWorkerSalary extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.person,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 Text(
                   '  Add Worker Salary',
-                  style: MyTextStyles.headingxSmallBoldBlack,
+                  style: MyTextStyles.headingxSmallBoldWhite,
                 ),
               ],
             ),
@@ -53,23 +53,27 @@ class AddWorkerSalary extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      CustomDropdown(
-                        dropDownTitle: 'Select Worker Type',
-                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Type',
-                      ),
-                      CustomDropdown(
-                        dropDownTitle: 'Select Worker Type First',
-                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Type First',
-                      ),
-                      CustomDropdown(
-                        dropDownTitle: 'Select Worker Name First',
-                        dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Name First',
-                      ),
-                    ],
+                  SizedBox(
+                    height: 340,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        CustomDropdown(
+                          dropDownTitle: 'Select Worker Type',
+                          dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Type',
+                        ),
+                        CustomDropdown(
+                          dropDownTitle: 'Select Worker Type First',
+                          dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Type First',
+                        ),
+                        CustomDropdown(
+                          dropDownTitle: 'Select Worker Name First',
+                          dropDownItemList: ['Ahsan', 'ali', 'gay', 'joe'], title: 'Worker Name First',
+                        ),
+                        CustomTextFormField(maxLines: 1, labelText: 'Salary',),
+                      ],
+                    ),
                   ),
                   Center(
                     child: ElevatedButton(

@@ -227,16 +227,13 @@ Widget headerTitle(double DefaultPadding) {
       ),
       child: RichText(
         text: TextSpan(
-          style: const TextStyle(
-            fontSize: wDefaultPadding,
-            color: Colors.black,
-          ),
+
           children: <TextSpan>[
             TextSpan(
                 text: sidebarList[sidebarController.selectedMenuIndex.value]
                     .title,
                 style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
             TextSpan(
                 text:
                     " > ${sidebarList[sidebarController.selectedMenuIndex.value].submenus[sidebarController.selectedSubmenuIndex.value].subTitle}", ),
@@ -269,7 +266,6 @@ Align SidebarButtotmSetting(
       padding: EdgeInsets.all(padding),
       child: InkWell(
         onTap: () {
-          Get.toNamed(MyRoutes.getDisplay());
           if (kDebugMode) {
             print("Settings");
           }

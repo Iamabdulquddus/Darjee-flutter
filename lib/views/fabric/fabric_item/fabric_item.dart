@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../admin/sidebar/sidebar_widget.dart';
+import '../../../constants/style.dart';
 import '../../content.dart';
 import 'components/add_fabric_item.dart';
 import 'components/fabric_item_list.dart';
@@ -11,7 +12,7 @@ class FabricItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: snowBackground,
       body: WidgetWithSidebar(
         context,
         cardOfUserTable(

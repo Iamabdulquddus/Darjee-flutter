@@ -25,7 +25,7 @@ class OrderDetailForm extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             decoration: const BoxDecoration(
-              color: secondary,
+              color: primary,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(10),
                 topLeft: Radius.circular(10),
@@ -35,19 +35,24 @@ class OrderDetailForm extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.menu_rounded,
-                  color: primary,
+                  color: Colors.white,
                 ),
                 Expanded(
                   child: Text(
                     '  Ahsan',
-                    style: MyTextStyles.headingxSmallBoldBlack,
+                    style: MyTextStyles.headingxSmallBoldWhite,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.delete,
-                    color: Colors.red,
+                ClipOval(
+                  child: Container(
+                    color: Colors.white,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                    ),
                   ),
                 ),
               ],
