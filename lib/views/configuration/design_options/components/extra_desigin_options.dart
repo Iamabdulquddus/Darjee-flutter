@@ -7,14 +7,21 @@ import '../../../../widgets/dropdown.dart';
 import '../../../../widgets/pick_image.dart';
 import '../../../../widgets/textformfeild.dart';
 
-class ExtraDesignOptions extends StatelessWidget {
+class ExtraDesignOptions extends StatefulWidget {
   const ExtraDesignOptions({Key? key}) : super(key: key);
 
+  @override
+  State<ExtraDesignOptions> createState() => _ExtraDesignOptionsState();
+}
+
+class _ExtraDesignOptionsState extends State<ExtraDesignOptions> {
+
+  final List<TextEditingController> controllers = [];
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: Responsive.isDesktop(context) ? 200 : 300,
+      height: 630,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: secondary),
         borderRadius: BorderRadius.circular(10),
@@ -53,50 +60,79 @@ class ExtraDesignOptions extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Responsive.isDesktop(context)
-                      ? Row(
-                          children: const [
-                            CustomTextFormField(
-                              maxLines: 1,
-                              labelText: 'Design Item',
-                              icon: Icon(Icons.person),
-                            ),
-                            CustomTextFormField(
-                              maxLines: 1,
-                              labelText: 'Option',
-                              icon: Icon(Icons.add_box_rounded),
-                            ),
-                            CustomTextFormField(
-                              maxLines: 1,
-                              labelText: 'price',
-                              icon: Icon(Icons.money),
+                  CustomTextFormField(
+                    maxLines: 1,
+                    labelText: 'Design Item',
+                    icon: Icon(Icons.person),
+                  ),
+
+                  SizedBox(height: 20,),
+                  Text(
+                    'Extra Design Options',
+                    style: MyTextStyles.subHeadingBoldPrimary,
+                  ),
+                  Row(
+                    children: [
+                      CustomTextFormField(
+                        maxLines: 1,
+                        labelText: 'Option',
+                        icon: Icon(Icons.add_box_rounded),
+                      ),
+                      CustomTextFormField(
+                        maxLines: 1,
+                        labelText: 'price',
+                        icon: Icon(Icons.money),
+                      ),
+                    ],
+                  ),
+                  ElevatedButton(onPressed: (){ setState(() {
+                    controllers.add(TextEditingController());
+                  });}, child: Text(' Add '),),
+                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 300,
+                    child: controllers.isEmpty
+                        ? SizedBox(
+
+                    )
+                        : ListView(
+                      children: controllers.map((controller) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                CustomTextFormField(
+                                  controller: controller,
+                                  maxLines: 1,
+                                  editable: false,
+                                  labelText: 'Option',
+                                ),
+                                CustomTextFormField(
+                                  controller: controller,
+                                  maxLines: 1,
+                                  editable: false,
+                                  labelText: 'Price',
+                                  keyboardType: TextInputType.phone,
+                                ),
+                                SizedBox(width: 10,),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.red),
+                                  onPressed: () {
+                                    setState(() {
+                                      controllers.remove(controller);
+                                    });
+                                  },
+                                  child: Text('Delete'),
+                                ),
+                              ],
                             ),
                           ],
-                        )
-                      : SizedBox(
-                          height: 150,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              CustomTextFormField(
-                                maxLines: 1,
-                                labelText: 'Design Item',
-                                icon: Icon(Icons.person),
-                              ),
-                              CustomTextFormField(
-                                maxLines: 1,
-                                labelText: 'Option',
-                                icon: Icon(Icons.add_box_rounded),
-                              ),
-                              CustomTextFormField(
-                                maxLines: 1,
-                                labelText: 'price',
-                                icon: Icon(Icons.money),
-                              ),
-                            ],
-                          ),
-                        ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
                   Center(
                     child: ElevatedButton(
                       onPressed: () {},
@@ -105,6 +141,7 @@ class ExtraDesignOptions extends StatelessWidget {
                   ),
                 ],
               ),
+
             ),
           ),
         ],

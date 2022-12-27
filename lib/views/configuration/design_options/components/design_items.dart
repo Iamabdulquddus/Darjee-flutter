@@ -1,7 +1,9 @@
 import 'dart:math';
+import 'package:darjee_flutter/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_table/responsive_table.dart';
 import '../../../../constants/style.dart';
+import 'package:get/get.dart';
 
 class DesignItems extends StatefulWidget {
   const DesignItems({Key? key}) : super(key: key);
@@ -136,7 +138,9 @@ class _DesignItemsState extends State<DesignItems> {
                   "View Detail Options",
                   style: MyTextStyles.xSmallWhite,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(MyRoutes.getViewDesignOptions() );
+                },
               ),
             );
           },

@@ -2,6 +2,7 @@
 import 'package:darjee_flutter/views/dryclean_orders/complete_orders/complete_orders.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import '../views/configuration/design_options/components/view_design_option.dart';
 import '../views/configuration/design_options/design_options.dart';
 import '../views/configuration/measurement_book/measurement_book.dart';
 import '../views/configuration/measurement_title/measurement_title.dart';
@@ -36,6 +37,7 @@ class MyRoutes {
   static String measurementTitle = '/measurement-title';
   static String measurementBook = '/measurement-book';
   static String designOptions = '/design-options';
+  static String viewDesignOptions = '/view-design-options';
   static String workerType = '/worker-type';
   static String workerSalary = '/worker-salary';
   static String articleTitle = '/article-title';
@@ -59,6 +61,7 @@ class MyRoutes {
   static String getMeasurementTitle() => measurementTitle;
   static String getMeasurementBook() => measurementBook;
   static String getDesignOptions() => designOptions;
+  static String getViewDesignOptions() => viewDesignOptions;
   static String getWorkerType() => workerType;
   static String getWorkerSalary() => workerSalary;
   static String getArticleTitle() => articleTitle;
@@ -128,6 +131,12 @@ class MyRoutes {
     GetPage(
       name: designOptions,
       page: () => DesignOptions(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: viewDesignOptions,
+      page: () => ViewDesignOptions(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),
