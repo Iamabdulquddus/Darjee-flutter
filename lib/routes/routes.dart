@@ -2,6 +2,8 @@
 import 'package:darjee_flutter/views/dryclean_orders/complete_orders/complete_orders.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import '../views/accounts/commission/commission.dart';
+import '../views/accounts/commission/commission_worker.dart';
 import '../views/configuration/design_options/components/view_design_option.dart';
 import '../views/configuration/design_options/design_options.dart';
 import '../views/configuration/measurement_book/measurement_book.dart';
@@ -50,6 +52,8 @@ class MyRoutes {
   static String completeOrders = '/complete-orders';
   static String deliveredToShop = '/delivered-to-shop';
   static String stitchingOrdersAction = '/stitching-orders-action';
+  static String commission = '/commission';
+  static String commissionWorker = '/commission-worker';
 
 
   static String getSplash() => splash;
@@ -74,6 +78,8 @@ class MyRoutes {
   static String getCompleteOrders() => completeOrders;
   static String getDeliveredToShop() => deliveredToShop;
   static String getStitchingOrdersAction() => stitchingOrdersAction;
+  static String getCommission() => commission;
+  static String getCommissionWorker() => commissionWorker;
 
 
   /// *********************GetPage************************
@@ -212,6 +218,17 @@ class MyRoutes {
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),
-
+    GetPage(
+      name: commission,
+      page: () => Commission(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: commissionWorker,
+      page: () => CommissionWorker(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
   ];
 }

@@ -160,9 +160,9 @@ List<CDM> sidebarList = [
     icon: Icons.local_offer,
     submenus: [
       subList(
-        subTitle: 'Vendor-Customer Transaction',
+        subTitle: 'Commission List',
         subIcon: Icons.list,
-        // myRoute: MyRoutes.getUnassignedOrders(),
+        myRoute: MyRoutes.getCommission(),
       ),
       subList(
         subTitle: 'Workers Salary (Monthly)',
