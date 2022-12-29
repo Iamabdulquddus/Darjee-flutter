@@ -25,6 +25,7 @@ import '../views/login/login.dart';
 import '../views/splash/splash.dart';
 import '../views/stiching_orders/do_action_button.dart';
 import '../views/stiching_orders/stiching_orders.dart';
+import '../views/worker/worker.dart';
 
 
 class MyRoutes {
@@ -36,6 +37,7 @@ class MyRoutes {
   static String login = '/login';
   static String generateOrder = '/generate-order';
   static String customer = '/customer';
+  static String worker = '/worker';
   static String measurementTitle = '/measurement-title';
   static String measurementBook = '/measurement-book';
   static String designOptions = '/design-options';
@@ -62,6 +64,7 @@ class MyRoutes {
   static String getLogin() => login;
   static String getGenerateOrder() => generateOrder;
   static String getCustomer() => customer;
+  static String getWorker() => worker;
   static String getMeasurementTitle() => measurementTitle;
   static String getMeasurementBook() => measurementBook;
   static String getDesignOptions() => designOptions;
@@ -119,6 +122,12 @@ class MyRoutes {
     GetPage(
       name: customer,
       page: () => Customer(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: worker,
+      page: () => Worker(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),

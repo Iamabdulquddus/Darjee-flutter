@@ -5,6 +5,7 @@ import '../../../constants/style.dart';
 import '../../content.dart';
 import 'components/closing_amount.dart';
 import 'components/commission_worker_detail.dart';
+import 'components/worker_advance_list.dart';
 
 class CommissionWorker extends StatefulWidget {
   const CommissionWorker({Key? key}) : super(key: key);
@@ -28,36 +29,32 @@ class _CommissionWorkerState extends State<CommissionWorker> {
               SizedBox(
                 height: 20,
               ),
-              Container(
-                // height: 700,
-
-                child: DefaultTabController(
-                  length: 2,
-                  child: Column(
-                    children:  [
-                      TabBar(
-                        labelColor: primary,
-                        labelStyle: MyTextStyles.headingxSmallBoldWhite,
-                        unselectedLabelColor: Colors.grey,
-                        overlayColor: MaterialStatePropertyAll(lightColor),
-                        unselectedLabelStyle: MyTextStyles.headingxSmallBoldGrey,
-                        tabs: [
-                          Tab(text: 'Worker Commission List', icon: Icon(Icons.person),),
-                          Tab(text: 'Worker Advance List', icon: Icon(Icons.person),),
+              DefaultTabController(
+                length: 2,
+                child: Column(
+                  children:  [
+                    TabBar(
+                      labelColor: primary,
+                      labelStyle: MyTextStyles.headingxSmallBoldWhite,
+                      unselectedLabelColor: Colors.grey,
+                      overlayColor: MaterialStatePropertyAll(lightColor),
+                      unselectedLabelStyle: MyTextStyles.headingxSmallBoldGrey,
+                      tabs: [
+                        Tab(text: 'Worker Commission List', icon: Icon(Icons.person),),
+                        Tab(text: 'Worker Advance List', icon: Icon(Icons.person),),
+                      ],
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height,
+                      padding: EdgeInsets.only(top: 20),
+                      child: TabBarView(
+                        children: [
+                          WorkerCommissionList(),
+                        WorkerAdvanceList(),
                         ],
                       ),
-                      Container(
-                        height: MediaQuery.of(context).size.height,
-                        padding: EdgeInsets.only(top: 20),
-                        child: TabBarView(
-                          children: [
-                            WorkerCommissionList(),
-                            Center(child: Text('Advance table here')),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
 

@@ -1,18 +1,15 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:responsive_table/responsive_table.dart';
-import '../../../../constants/style.dart';
-import 'package:get/get.dart';
+import '../../../constants/style.dart';
 
-import '../../../../routes/routes.dart';
-
-class CommissionList extends StatefulWidget {
-  const CommissionList({Key? key}) : super(key: key);
+class AllWorkersList extends StatefulWidget {
+  const AllWorkersList({Key? key}) : super(key: key);
   @override
-  State<CommissionList> createState() => _CommissionListState();
+  State<AllWorkersList> createState() => _AllWorkersListState();
 }
 
-class _CommissionListState extends State<CommissionList> {
+class _AllWorkersListState extends State<AllWorkersList> {
   late List<DatatableHeader> _headers;
 
   final List<int> _perPages = [10, 20, 50, 100];
@@ -45,12 +42,13 @@ class _CommissionListState extends State<CommissionList> {
     for (var data in source) {
       temps.add({
         "id": i,
-        "name": "Worker Name $i",
-        "type": "Cutter",
-        "item": "Shirt",
-        "date": "12-01-2023",
-        "commission": "300",
-        "details": "",
+        "name": "Customer Name $i",
+        "pic": " ",
+        "reg": i * 10.00,
+        "mobile": "03001234567",
+        "status": "Active",
+        "details": "${i}0.20",
+        "actions": [i, 5]
       });
       i++;
     }
@@ -125,36 +123,56 @@ class _CommissionListState extends State<CommissionList> {
           sortable: true,
           textAlign: TextAlign.left),
       DatatableHeader(
-          text: "Worker Name",
+          text: "Customer Name",
           value: "name",
           show: true,
-          flex: 3,
+          flex: 2,
           sortable: true,
           editable: true,
           textAlign: TextAlign.left),
       DatatableHeader(
-          text: "Worker Type",
-          value: "type",
+          text: "Picture",
+          value: "pic",
+          show: true,
+          sortable: false,
+          sourceBuilder: (value, row) {
+            return Container(
+              padding: const EdgeInsets.all(5),
+              height: 70,
+              child: Image.asset(
+                'assets/images/islamabad.jpg',
+                fit: BoxFit.cover,
+              ),
+            );
+          },
+          textAlign: TextAlign.center),
+      DatatableHeader(
+          text: "Registration Date",
+          value: "reg",
           show: true,
           sortable: true,
           textAlign: TextAlign.center),
       DatatableHeader(
-          text: "Worked Item",
-          value: "item",
+          text: "Mobile",
+          value: "mobile",
           show: true,
           sortable: true,
           textAlign: TextAlign.center),
       DatatableHeader(
-          text: "Completion Date",
-          value: "date",
+          text: "Status",
+          value: "status",
           show: true,
           sortable: true,
-          textAlign: TextAlign.center),
-      DatatableHeader(
-          text: "Commission",
-          value: "commission",
-          show: true,
-          sortable: true,
+          sourceBuilder: (value, row) {
+            return Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.green.shade800),
+                child: Text("Active"),
+                onPressed: () {},
+              ),
+            );
+          },
           textAlign: TextAlign.center),
       DatatableHeader(
           text: "Details",
@@ -166,10 +184,27 @@ class _CommissionListState extends State<CommissionList> {
               padding: const EdgeInsets.all(15.0),
               child: ElevatedButton(
                 child: Text("Details"),
-                onPressed: () {
-                  Get.toNamed(MyRoutes.getCommissionWorker());
-                },
+                onPressed: () {},
               ),
+            );
+          },
+          textAlign: TextAlign.left),
+      DatatableHeader(
+          text: "Actions",
+          value: "actions",
+          show: true,
+          sortable: false,
+          sourceBuilder: (value, row) {
+            return Wrap(
+              runSpacing: 5,
+              spacing: 5,
+              children: [
+                for (var i = 0; i < value.length; i++)
+                  ElevatedButton(
+                    child: Text("button $i"),
+                    onPressed: () {},
+                  ),
+              ],
             );
           },
           textAlign: TextAlign.center),
@@ -208,7 +243,7 @@ class _CommissionListState extends State<CommissionList> {
                   color: Colors.white,
                 ),
                 Text(
-                  '  Commission List',
+                  '  All Worker List',
                   style: MyTextStyles.headingxSmallBoldWhite,
                 ),
               ],

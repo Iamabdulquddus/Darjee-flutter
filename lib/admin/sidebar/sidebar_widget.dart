@@ -30,6 +30,16 @@ List<CDM> sidebarList = [
     ],
   ),
   CDM(
+    title: 'Worker',
+    icon: Icons.supervised_user_circle,
+    submenus: [
+      subList(
+          subTitle: 'Worker',
+          subIcon: Icons.admin_panel_settings,
+          myRoute: MyRoutes.getWorker()),
+    ],
+  ),
+  CDM(
     title: 'Configuration',
     icon: Icons.local_offer,
     submenus: [

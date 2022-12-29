@@ -5,13 +5,13 @@ import '../../../../constants/style.dart';
 import 'package:get/get.dart';
 import '../../../../routes/routes.dart';
 
-class WorkerCommissionList extends StatefulWidget {
-  const WorkerCommissionList({Key? key}) : super(key: key);
+class WorkerAdvanceList extends StatefulWidget {
+  const WorkerAdvanceList({Key? key}) : super(key: key);
   @override
-  State<WorkerCommissionList> createState() => _WorkerCommissionListState();
+  State<WorkerAdvanceList> createState() => _WorkerAdvanceListState();
 }
 
-class _WorkerCommissionListState extends State<WorkerCommissionList> {
+class _WorkerAdvanceListState extends State<WorkerAdvanceList> {
   late List<DatatableHeader> _headers;
 
   final List<int> _perPages = [10, 20, 50, 100];
@@ -44,10 +44,9 @@ class _WorkerCommissionListState extends State<WorkerCommissionList> {
     for (var data in source) {
       temps.add({
         "id": i,
-        "name": "Item Name $i",
-        "start": "29-12-2022",
-        "end": "19-01-2023",
-        "commission": "300",
+        "date": "29-12-2022",
+        "advance": "500",
+        "balance": "4500",
       });
       i++;
     }
@@ -122,28 +121,22 @@ class _WorkerCommissionListState extends State<WorkerCommissionList> {
           sortable: true,
           textAlign: TextAlign.left),
       DatatableHeader(
-          text: "Item Name",
-          value: "name",
+          text: "Advance Date",
+          value: "date",
           show: true,
           flex: 3,
           sortable: true,
           editable: true,
           textAlign: TextAlign.left),
       DatatableHeader(
-          text: "Start Time",
-          value: "start",
+          text: "Advance Amount",
+          value: "amount",
           show: true,
           sortable: true,
           textAlign: TextAlign.center),
       DatatableHeader(
-          text: "End Item",
-          value: "end",
-          show: true,
-          sortable: true,
-          textAlign: TextAlign.center),
-      DatatableHeader(
-          text: "Commission",
-          value: "commission",
+          text: "Last Balance",
+          value: "balance",
           show: true,
           sortable: true,
           textAlign: TextAlign.center),
@@ -160,10 +153,11 @@ class _WorkerCommissionListState extends State<WorkerCommissionList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 600,
+      height:600,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: secondary),
         borderRadius: BorderRadius.circular(10),
+
       ),
       child: Card(
         elevation: 1,
