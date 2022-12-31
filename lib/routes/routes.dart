@@ -7,6 +7,7 @@ import '../views/accounts/commission/commission_worker.dart';
 import '../views/configuration/design_options/components/view_design_option.dart';
 import '../views/configuration/design_options/design_options.dart';
 import '../views/configuration/measurement_book/measurement_book.dart';
+import '../views/configuration/measurement_title/components/measurement_title_detail.dart';
 import '../views/configuration/measurement_title/measurement_title.dart';
 import '../views/configuration/worker_salary/worker_salary.dart';
 import '../views/configuration/worker_type/worker_type.dart';
@@ -39,6 +40,7 @@ class MyRoutes {
   static String customer = '/customer';
   static String worker = '/worker';
   static String measurementTitle = '/measurement-title';
+  static String measurementTitleDetail = '/measurement-title-detail';
   static String measurementBook = '/measurement-book';
   static String designOptions = '/design-options';
   static String viewDesignOptions = '/view-design-options';
@@ -66,6 +68,7 @@ class MyRoutes {
   static String getCustomer() => customer;
   static String getWorker() => worker;
   static String getMeasurementTitle() => measurementTitle;
+  static String getMeasurementTitleDetail() => measurementTitleDetail;
   static String getMeasurementBook() => measurementBook;
   static String getDesignOptions() => designOptions;
   static String getViewDesignOptions() => viewDesignOptions;
@@ -152,6 +155,12 @@ class MyRoutes {
     GetPage(
       name: viewDesignOptions,
       page: () => ViewDesignOptions(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: measurementTitleDetail,
+      page: () => MeasurementTitleDetail(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),

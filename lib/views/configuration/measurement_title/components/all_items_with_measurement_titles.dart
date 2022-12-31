@@ -2,14 +2,19 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:responsive_table/responsive_table.dart';
 import '../../../../constants/style.dart';
+import 'package:get/get.dart';
+
+import '../../../../routes/routes.dart';
 
 class AllItemsWithMeasurementTitles extends StatefulWidget {
   const AllItemsWithMeasurementTitles({Key? key}) : super(key: key);
   @override
-  State<AllItemsWithMeasurementTitles> createState() => _AllItemsWithMeasurementTitlesState();
+  State<AllItemsWithMeasurementTitles> createState() =>
+      _AllItemsWithMeasurementTitlesState();
 }
 
-class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementTitles> {
+class _AllItemsWithMeasurementTitlesState
+    extends State<AllItemsWithMeasurementTitles> {
   late List<DatatableHeader> _headers;
 
   final List<int> _perPages = [10, 20, 50, 100];
@@ -45,7 +50,7 @@ class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementT
         "pic": " ",
         "name": "Customer Name $i",
         "category": "Stitching",
-        "price": "${i * 20}" ,
+        "price": "${i * 20}",
         "measurement": "",
       });
       i++;
@@ -74,7 +79,7 @@ class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementT
   _resetData({start: 0}) async {
     setState(() => _isLoading = true);
     var expandedLen =
-    _total - start < _currentPerPage! ? _total - start : _currentPerPage;
+        _total - start < _currentPerPage! ? _total - start : _currentPerPage;
     Future.delayed(const Duration(seconds: 0)).then((value) {
       _expanded = List.generate(expandedLen as int, (index) => false);
       _source.clear();
@@ -92,9 +97,9 @@ class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementT
       } else {
         _sourceFiltered = _sourceOriginal
             .where((data) => data[_searchKey]
-            .toString()
-            .toLowerCase()
-            .contains(value.toString().toLowerCase()))
+                .toString()
+                .toLowerCase()
+                .contains(value.toString().toLowerCase()))
             .toList();
       }
 
@@ -168,13 +173,17 @@ class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementT
             return Padding(
               padding: const EdgeInsets.all(15.0),
               child: ElevatedButton(
-                child: Text("View Measurement Titles", style: MyTextStyles.xSmallWhite,),
-                onPressed: () {},
+                child: Text(
+                  "View Detail",
+                  style: MyTextStyles.xSmallWhite,
+                ),
+                onPressed: () {
+                  Get.toNamed(MyRoutes.getMeasurementTitleDetail());
+                },
               ),
             );
           },
           textAlign: TextAlign.center),
-
     ];
 
     _initializeData();
@@ -223,23 +232,23 @@ class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementT
                 if (_isSearch)
                   Expanded(
                       child: TextField(
-                        decoration: InputDecoration(
-                            hintText:
+                    decoration: InputDecoration(
+                        hintText:
                             'Enter search term based on ${_searchKey.replaceAll(RegExp('[\\W_]+'), ' ').toUpperCase()}',
-                            prefixIcon: IconButton(
-                                icon: const Icon(Icons.cancel),
-                                onPressed: () {
-                                  setState(() {
-                                    _isSearch = false;
-                                  });
-                                  _initializeData();
-                                }),
-                            suffixIcon: IconButton(
-                                icon: const Icon(Icons.search), onPressed: () {})),
-                        onSubmitted: (value) {
-                          _filterData(value);
-                        },
-                      )),
+                        prefixIcon: IconButton(
+                            icon: const Icon(Icons.cancel),
+                            onPressed: () {
+                              setState(() {
+                                _isSearch = false;
+                              });
+                              _initializeData();
+                            }),
+                        suffixIcon: IconButton(
+                            icon: const Icon(Icons.search), onPressed: () {})),
+                    onSubmitted: (value) {
+                      _filterData(value);
+                    },
+                  )),
                 if (!_isSearch)
                   TextButton(
                       onPressed: () {
@@ -275,9 +284,9 @@ class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementT
                       value: _currentPerPage,
                       items: _perPages
                           .map((e) => DropdownMenuItem<int>(
-                        child: Text("$e"),
-                        value: e,
-                      ))
+                                child: Text("$e"),
+                                value: e,
+                              ))
                           .toList(),
                       onChanged: (dynamic value) {
                         setState(() {
@@ -301,12 +310,12 @@ class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementT
                   onPressed: _currentPage == 1
                       ? null
                       : () {
-                    var nextSet = _currentPage - _currentPerPage!;
-                    setState(() {
-                      _currentPage = nextSet > 1 ? nextSet : 1;
-                      _resetData(start: _currentPage - 1);
-                    });
-                  },
+                          var nextSet = _currentPage - _currentPerPage!;
+                          setState(() {
+                            _currentPage = nextSet > 1 ? nextSet : 1;
+                            _resetData(start: _currentPage - 1);
+                          });
+                        },
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                 ),
                 IconButton(
@@ -314,15 +323,15 @@ class _AllItemsWithMeasurementTitlesState extends State<AllItemsWithMeasurementT
                   onPressed: _currentPage + _currentPerPage! - 1 > _total
                       ? null
                       : () {
-                    var nextSet = _currentPage + _currentPerPage!;
+                          var nextSet = _currentPage + _currentPerPage!;
 
-                    setState(() {
-                      _currentPage = nextSet < _total
-                          ? nextSet
-                          : _total - _currentPerPage!;
-                      _resetData(start: nextSet - 1);
-                    });
-                  },
+                          setState(() {
+                            _currentPage = nextSet < _total
+                                ? nextSet
+                                : _total - _currentPerPage!;
+                            _resetData(start: nextSet - 1);
+                          });
+                        },
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                 )
               ],
