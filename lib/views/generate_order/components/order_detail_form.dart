@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import '../../../constants/style.dart';
 import '../../../model/order_item.dart';
 import '../../../responsive.dart';
-import '../../generate_order/components/select_item_card.dart';
 import 'order_detail_extra.dart';
 import 'order_measurement_card.dart';
+import 'select_item_card.dart';
 
 class OrderDetailForm extends StatelessWidget {
   const OrderDetailForm({Key? key}) : super(key: key);

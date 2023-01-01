@@ -3,8 +3,7 @@ import '../../admin/sidebar/sidebar_widget.dart';
 import '../../constants/style.dart';
 import '../content.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../order_details/components/order_detail_form.dart';
+import 'components/order_detail_form.dart';
 import 'components/generate_order_form.dart';
 
 class GenerateOrder extends StatefulWidget {

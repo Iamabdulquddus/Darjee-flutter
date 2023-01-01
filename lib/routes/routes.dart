@@ -6,6 +6,7 @@ import '../views/accounts/commission/commission.dart';
 import '../views/accounts/commission/commission_worker.dart';
 import '../views/configuration/design_options/components/view_design_option.dart';
 import '../views/configuration/design_options/design_options.dart';
+import '../views/configuration/measurement_book/components/searched_customer_output.dart';
 import '../views/configuration/measurement_book/measurement_book.dart';
 import '../views/configuration/measurement_title/components/measurement_title_detail.dart';
 import '../views/configuration/measurement_title/measurement_title.dart';
@@ -20,7 +21,6 @@ import '../views/fabric/article_title/article_title.dart';
 import '../views/fabric/brand/brand.dart';
 import '../views/fabric/fabric_item/fabric_item.dart';
 import '../views/franchise/franchise.dart';
-import '../views/order_details/order_details.dart';
 import '../views/generate_order/generate_order.dart';
 import '../views/login/login.dart';
 import '../views/splash/splash.dart';
@@ -42,6 +42,7 @@ class MyRoutes {
   static String measurementTitle = '/measurement-title';
   static String measurementTitleDetail = '/measurement-title-detail';
   static String measurementBook = '/measurement-book';
+  static String searchedCustomerOutput = '/searched-customer-output';
   static String designOptions = '/design-options';
   static String viewDesignOptions = '/view-design-options';
   static String workerType = '/worker-type';
@@ -49,7 +50,6 @@ class MyRoutes {
   static String articleTitle = '/article-title';
   static String brandTitle = '/brand-title';
   static String fabricItem = '/fabric-item';
-  static String orderDetails = '/order-details';
   static String stitchingOrders = '/stitching-orders';
   static String unassignedOrders = '/unassigned-orders';
   static String assignedOrders = '/assigned-orders';
@@ -70,6 +70,7 @@ class MyRoutes {
   static String getMeasurementTitle() => measurementTitle;
   static String getMeasurementTitleDetail() => measurementTitleDetail;
   static String getMeasurementBook() => measurementBook;
+  static String getSearchedCustomerOutput() => searchedCustomerOutput;
   static String getDesignOptions() => designOptions;
   static String getViewDesignOptions() => viewDesignOptions;
   static String getWorkerType() => workerType;
@@ -77,7 +78,6 @@ class MyRoutes {
   static String getArticleTitle() => articleTitle;
   static String getBrandTitle() => brandTitle;
   static String getFabricItem() => fabricItem;
-  static String getOrderDetails() => orderDetails;
   static String getStitchingOrders() => stitchingOrders;
   static String getUnassignedOrders() => unassignedOrders;
   static String getAssignedOrders() => assignedOrders;
@@ -147,6 +147,12 @@ class MyRoutes {
       transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
+      name: searchedCustomerOutput,
+      page: () => SearchedCustomerOutput(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
       name: designOptions,
       page: () => DesignOptions(),
       transition: Transition.leftToRightWithFade,
@@ -191,12 +197,6 @@ class MyRoutes {
     GetPage(
       name: fabricItem,
       page: () => FabricItem(),
-      transition: Transition.leftToRightWithFade,
-      transitionDuration: Duration(milliseconds: 500),
-    ),
-    GetPage(
-      name: orderDetails,
-      page: () => OrderDetails(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),
