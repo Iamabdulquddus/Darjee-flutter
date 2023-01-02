@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 
 class CDM {
   //complex drawer menu
-  final IconData icon;
-  final String title;
+   IconData? icon;
+  final String title ;
+  final String imageIcon;
   final List<subList> submenus;
-  CDM({required this.icon, required this.title, required this.submenus});
+  CDM({ required this.imageIcon, this.icon, required this.title, required this.submenus});
 
 }
 
 
 class subList {
   String? myRoute;
+  Widget? imageIcon;
   late final String subTitle;
-  late final IconData subIcon;
+  IconData? subIcon;
   subList({
+    this.imageIcon,
     required this.subTitle,
-    required this.subIcon,
+    this.subIcon,
     this.myRoute
   });
 }

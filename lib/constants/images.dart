@@ -10,3 +10,5 @@ const String karachi = 'assets/images/karachi.jpg';
 const String peshawar = 'assets/images/peshawar.jpg';
 const String quetta = 'assets/images/quetta.jpg';
 const String devCrew = 'assets/icons/devcrew.png';
+
+const String worker = 'assets/icons/worker.png';

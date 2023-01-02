@@ -65,7 +65,7 @@ class _AddMeasurementsState extends State<AddMeasurements> {
                   height: 20,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     CustomTextFormField(
                       maxLines: 1,
                       labelText: 'قمیض لمبائی ',
@@ -87,7 +87,7 @@ class _AddMeasurementsState extends State<AddMeasurements> {
                   height: 10,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     CustomTextFormField(
                       maxLines: 1,
                       labelText: 'چھاتی',
@@ -109,7 +109,7 @@ class _AddMeasurementsState extends State<AddMeasurements> {
                   height: 10,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     CustomTextFormField(
                       maxLines: 1,
                       labelText: 'کندھا',
@@ -131,7 +131,7 @@ class _AddMeasurementsState extends State<AddMeasurements> {
                   height: 10,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     CustomTextFormField(
                       maxLines: 1,
                       labelText: 'شلوار لمبائی',
@@ -153,7 +153,7 @@ class _AddMeasurementsState extends State<AddMeasurements> {
                   height: 10,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     CustomTextFormField(
                       maxLines: 1,
                       labelText: 'آسن',

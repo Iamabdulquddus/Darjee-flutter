@@ -10,6 +10,7 @@ import '../../routes/routes.dart';
 
 List<CDM> sidebarList = [
   CDM(
+    imageIcon: worker,
     title: 'Dashboard',
     icon: Icons.dashboard,
     submenus: [
@@ -20,18 +21,20 @@ List<CDM> sidebarList = [
     ],
   ),
   CDM(
+    imageIcon: worker,
     title: 'Customer',
     icon: Icons.supervised_user_circle,
     submenus: [
       subList(
           subTitle: 'Customer',
-          subIcon: Icons.admin_panel_settings,
+          subIcon: Icons.supervised_user_circle,
           myRoute: MyRoutes.getCustomer()),
     ],
   ),
   CDM(
     title: 'Worker',
-    icon: Icons.supervised_user_circle,
+    // icon: Icons.supervised_user_circle,
+    imageIcon: worker,
     submenus: [
       subList(
           subTitle: 'Worker',
@@ -40,6 +43,7 @@ List<CDM> sidebarList = [
     ],
   ),
   CDM(
+    imageIcon: worker,
     title: 'Configuration',
     icon: Icons.local_offer,
     submenus: [
@@ -71,6 +75,7 @@ List<CDM> sidebarList = [
     ],
   ),
   CDM(
+    imageIcon: worker,
     title: 'Fabric Configuration',
     icon: Icons.local_offer,
     submenus: [
@@ -102,6 +107,7 @@ List<CDM> sidebarList = [
     ],
   ),
   CDM(
+    imageIcon: worker,
     title: 'Generate Order',
     icon: Icons.local_offer,
     submenus: [
@@ -113,6 +119,7 @@ List<CDM> sidebarList = [
     ],
   ),
   CDM(
+    imageIcon: worker,
     title: 'Stitching Order',
     icon: Icons.local_offer,
     submenus: [
@@ -124,6 +131,7 @@ List<CDM> sidebarList = [
     ],
   ),
   CDM(
+    imageIcon: worker,
     title: 'Dry Clean Order',
     icon: Icons.local_offer,
     submenus: [
@@ -155,6 +163,7 @@ List<CDM> sidebarList = [
     ],
   ),
   CDM(
+    imageIcon: worker,
     title: 'Total Orders',
     icon: Icons.local_offer,
     submenus: [
@@ -166,6 +175,7 @@ List<CDM> sidebarList = [
     ],
   ),
   CDM(
+    imageIcon: worker,
     title: 'Accounts',
     icon: Icons.local_offer,
     submenus: [
@@ -327,15 +337,16 @@ ListView ListItem() {
           padding: EdgeInsets.all(2),
           color: primary,
           child: ExpansionTile(
-            iconColor: Colors.white,
+            // iconColor: Colors.white,
             key: Key(index.toString()),
             initiallyExpanded:
                 index == sidebarController.selectedMenuIndex.value,
             collapsedBackgroundColor: Colors.white30,
-            leading: Icon(
-              sidebarList[index].icon,
-              color: Colors.white,
-            ),
+            leading:Image.asset(sidebarList[index].imageIcon, width: 30,),
+            // Icon(
+            //   sidebarList[index].icon,
+            //   color: Colors.white,
+            // ),
             title: Transform.translate(
               offset: Offset(-21, 0),
               child: Text(
