@@ -13,11 +13,11 @@ class CDM {
 
 class subList {
   String? myRoute;
-  Widget? imageIcon;
+  final String subImageIcon;
   late final String subTitle;
   IconData? subIcon;
   subList({
-    this.imageIcon,
+   required this.subImageIcon,
     required this.subTitle,
     this.subIcon,
     this.myRoute

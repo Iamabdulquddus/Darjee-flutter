@@ -23,6 +23,7 @@ import '../views/fabric/fabric_item/fabric_item.dart';
 import '../views/franchise/franchise.dart';
 import '../views/generate_order/generate_order.dart';
 import '../views/login/login.dart';
+import '../views/setting/setting_dashboard/setting_dashboard.dart';
 import '../views/splash/splash.dart';
 import '../views/stiching_orders/do_action_button.dart';
 import '../views/stiching_orders/stiching_orders.dart';
@@ -59,6 +60,9 @@ class MyRoutes {
   static String commission = '/commission';
   static String commissionWorker = '/commission-worker';
 
+  /// Setting Dashboard
+  static String settingDashboard = '/Setting-Dashboard';
+
 
   static String getSplash() => splash;
   static String getDashboard() => dashboard;
@@ -86,6 +90,10 @@ class MyRoutes {
   static String getStitchingOrdersAction() => stitchingOrdersAction;
   static String getCommission() => commission;
   static String getCommissionWorker() => commissionWorker;
+
+  /// Setting Dashboard
+
+  static String getSettingDashboard() => settingDashboard;
 
 
   /// *********************GetPage************************
@@ -245,6 +253,15 @@ class MyRoutes {
     GetPage(
       name: commissionWorker,
       page: () => CommissionWorker(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+
+
+    /// Setting Dashboard....
+    GetPage(
+      name: settingDashboard,
+      page: () => SettingDashboard(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),
