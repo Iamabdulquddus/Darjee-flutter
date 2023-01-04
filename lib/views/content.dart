@@ -6,7 +6,7 @@ Widget cardOfUserTable(BuildContext context,Widget views){
 
   return Container(
     // color: snowBackground,
-    padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
     child: ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
       child: SingleChildScrollView(

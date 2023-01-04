@@ -317,7 +317,7 @@ Align SidebarButtotmSetting(
           if (kDebugMode) {
             print("Settings");
           }
-          Get.toNamed(MyRoutes.getSettingDashboard());
+          Get.toNamed(MyRoutes.getAdminProfile());
         },
         child: Responsive.isDesktop(context)
             ? Row(

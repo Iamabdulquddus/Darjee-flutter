@@ -11,12 +11,29 @@ import '../../routes/routes.dart';
 List<CDM> sidebarSettingList = [
   CDM(
     imageIcon: dashboard,
-    title: 'Dashboard',
+    title: 'Admin',
     submenus: [
       subList(
           subImageIcon: dashboard,
-          subTitle: 'Dashboard',
-          myRoute: MyRoutes.getDashboard()),
+          subTitle: 'Profile',
+          myRoute: MyRoutes.getAdminProfile(),
+      ),
+      subList(
+          subImageIcon: dashboard,
+          subTitle: 'Modify Password',
+          myRoute: MyRoutes.getModifyPassword(),
+      ),
+    ],
+  ),
+  CDM(
+    imageIcon: dashboard,
+    title: 'Franchise',
+    submenus: [
+      subList(
+          subImageIcon: dashboard,
+          subTitle: 'Franchise',
+          myRoute: MyRoutes.getSettingFranchise(),
+      ),
     ],
   ),
 

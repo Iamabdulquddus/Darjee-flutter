@@ -23,7 +23,9 @@ import '../views/fabric/fabric_item/fabric_item.dart';
 import '../views/franchise/franchise.dart';
 import '../views/generate_order/generate_order.dart';
 import '../views/login/login.dart';
-import '../views/setting/setting_dashboard/setting_dashboard.dart';
+import '../views/setting/admin_profile/admin_profile.dart';
+import '../views/setting/modify_password/modify_password.dart';
+import '../views/setting/setting_franchise/setting_franchise.dart';
 import '../views/splash/splash.dart';
 import '../views/stiching_orders/do_action_button.dart';
 import '../views/stiching_orders/stiching_orders.dart';
@@ -61,7 +63,11 @@ class MyRoutes {
   static String commissionWorker = '/commission-worker';
 
   /// Setting Dashboard
-  static String settingDashboard = '/Setting-Dashboard';
+
+
+  static String adminProfile = '/admin-profile';
+  static String modifyPassword = '/modify-password';
+  static String settingFranchise = '/setting-franchise';
 
 
   static String getSplash() => splash;
@@ -93,7 +99,9 @@ class MyRoutes {
 
   /// Setting Dashboard
 
-  static String getSettingDashboard() => settingDashboard;
+  static String getAdminProfile() => adminProfile;
+  static String getModifyPassword() => modifyPassword;
+  static String getSettingFranchise() => settingFranchise;
 
 
   /// *********************GetPage************************
@@ -260,8 +268,20 @@ class MyRoutes {
 
     /// Setting Dashboard....
     GetPage(
-      name: settingDashboard,
-      page: () => SettingDashboard(),
+      name: adminProfile,
+      page: () => AdminProfile(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: modifyPassword,
+      page: () => ModifyPassword(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: settingFranchise,
+      page: () => SettingFranchise(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),
