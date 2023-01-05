@@ -23,6 +23,7 @@ import '../views/fabric/fabric_item/fabric_item.dart';
 import '../views/franchise/franchise.dart';
 import '../views/generate_order/generate_order.dart';
 import '../views/login/login.dart';
+import '../views/setting/admin/admin.dart';
 import '../views/setting/admin_profile/admin_profile.dart';
 import '../views/setting/modify_password/modify_password.dart';
 import '../views/setting/setting_franchise/setting_franchise.dart';
@@ -68,6 +69,7 @@ class MyRoutes {
   static String adminProfile = '/admin-profile';
   static String modifyPassword = '/modify-password';
   static String settingFranchise = '/setting-franchise';
+  static String admin = '/admin';
 
 
   static String getSplash() => splash;
@@ -102,6 +104,7 @@ class MyRoutes {
   static String getAdminProfile() => adminProfile;
   static String getModifyPassword() => modifyPassword;
   static String getSettingFranchise() => settingFranchise;
+  static String getAdmin() => admin;
 
 
   /// *********************GetPage************************
@@ -282,6 +285,12 @@ class MyRoutes {
     GetPage(
       name: settingFranchise,
       page: () => SettingFranchise(),
+      transition: Transition.leftToRightWithFade,
+      transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: admin,
+      page: () => Admin(),
       transition: Transition.leftToRightWithFade,
       transitionDuration: Duration(milliseconds: 500),
     ),

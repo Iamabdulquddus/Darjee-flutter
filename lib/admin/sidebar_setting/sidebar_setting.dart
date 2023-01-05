@@ -15,6 +15,11 @@ List<CDM> sidebarSettingList = [
     submenus: [
       subList(
           subImageIcon: dashboard,
+          subTitle: 'Add Admin',
+          myRoute: MyRoutes.getAdmin(),
+      ),
+      subList(
+          subImageIcon: dashboard,
           subTitle: 'Profile',
           myRoute: MyRoutes.getAdminProfile(),
       ),
