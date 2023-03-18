@@ -1,4 +1,5 @@
 
+import 'package:darjee_flutter/connection/connect.dart';
 import 'package:darjee_flutter/constants/style.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class Customer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    conn();
     return Scaffold(
       backgroundColor: snowBackground,
       body: WidgetWithSidebar(
@@ -23,5 +25,13 @@ class Customer extends StatelessWidget {
             ],
           ))),
     );
+  }
+
+  Future<void> conn() async {
+    var user = await Connect.fetchCustomerDetails("SELECT * FROM customer");
+    for(var item in user){
+      print("connection okay ${item}");
+    }
+
   }
 }
