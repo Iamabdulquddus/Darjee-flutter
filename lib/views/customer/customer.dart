@@ -2,14 +2,19 @@
 import 'package:darjee_flutter/connection/connect.dart';
 import 'package:darjee_flutter/constants/style.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../admin/sidebar/sidebar_widget.dart';
+import '../../controller/customer_controller.dart';
 import '../content.dart';
 import 'components/add_customer_info.dart';
 import 'components/customer_list.dart';
 
+
 class Customer extends StatelessWidget {
-  const Customer({Key? key}) : super(key: key);
+
+
+  final controller = Get.put(CustomerController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +33,6 @@ class Customer extends StatelessWidget {
   }
 
   Future<void> conn() async {
-    var user = await Connect.fetchCustomerDetails("SELECT * FROM customer");
-    for(var item in user){
-      print("connection okay ${item}");
-    }
-
+    controller.customerDetails();
   }
 }

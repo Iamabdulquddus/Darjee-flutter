@@ -18,7 +18,7 @@ class Connect {
 
 
 
-  static fetchCustomerDetails(String query) async {
+  static fetchDetails(String query) async {
     var connection = await instance.connection;
     return await connection.query(query);
   }
