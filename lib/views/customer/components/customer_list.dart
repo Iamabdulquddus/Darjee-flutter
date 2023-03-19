@@ -1,7 +1,10 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:responsive_table/responsive_table.dart';
 import '../../../constants/style.dart';
+import '../../../controller/customer_controller.dart';
+import '../../../model/customer_model.dart';
 
 class AddCustomerList extends StatefulWidget {
   const AddCustomerList({Key? key}) : super(key: key);
@@ -16,11 +19,11 @@ class _AddCustomerListState extends State<AddCustomerList> {
   int _total = 100;
   int? _currentPerPage = 10;
   List<bool>? _expanded;
-  final String _searchKey = "id";
+  final String _searchKey = "name";
 
   int _currentPage = 1;
   bool _isSearch = false;
-  final List<Map<String, dynamic>> _sourceOriginal = [];
+  List<Map<String, dynamic>> _sourceOriginal = [];
   List<Map<String, dynamic>> _sourceFiltered = [];
   List<Map<String, dynamic>> _source = [];
   final List<Map<String, dynamic>> _selecteds = [];
@@ -33,41 +36,43 @@ class _AddCustomerListState extends State<AddCustomerList> {
   final bool _showSelect = false;
   var random = Random();
 
-  List<Map<String, dynamic>> _generateData({int n = 100}) {
-    final List source = List.filled(n, Random.secure());
-    List<Map<String, dynamic>> temps = [];
-    var i = 1;
-    print(i);
-    // ignore: unused_local_variable
-    for (var data in source) {
-      temps.add({
-        "id": i,
-        "name": "Customer Name $i",
-        "pic": " ",
-        "reg": i * 10.00,
-        "mobile": "03001234567",
-        "details": "${i}0.20",
-        "actions": [i, 5]
-      });
-      i++;
-    }
-    return temps;
+
+  _initializeData(String query) async {
+    _mockPullData(query);
   }
 
-  _initializeData() async {
-    _mockPullData();
-  }
-
-  _mockPullData() async {
+  _mockPullData(String query) async {
     _expanded = List.generate(_currentPerPage!, (index) => false);
-
+    customerModel.clear();
+    customerModel = await controller.customerDetails(query);
     setState(() => _isLoading = true);
-    Future.delayed(const Duration(seconds: 3)).then((value) {
+    Future.delayed(const Duration(seconds: 3)).then((value)  {
       _sourceOriginal.clear();
-      _sourceOriginal.addAll(_generateData(n: random.nextInt(10000)));
-      _sourceFiltered = _sourceOriginal;
+      List<Map<String, dynamic>> temps = [];
+        var i = 1;
+        print(i);
+        // ignore: unused_local_variable
+        for (var data in customerModel) {
+          temps.add({
+            "id": i,
+            "name": "${data.fullName}",
+            "pic": " ",
+            "reg": data.birthDate,
+            "mobile": "${data.phone}",
+            "details": "${data.customerId}",
+            "actions": [i, 5]
+          });
+          i++;
+        }
+
+      _sourceOriginal = temps;
+      _sourceFiltered = temps;
       _total = _sourceFiltered.length;
-      _source = _sourceFiltered.getRange(0, _currentPerPage!).toList();
+      if( _sourceFiltered.length>_perPages[0]){
+        _source = _sourceFiltered.getRange(0, _currentPerPage!).toList();
+      }else{
+        _source = _sourceFiltered.getRange(0, _sourceFiltered.length).toList();
+      }
       setState(() => _isLoading = false);
     });
   }
@@ -109,9 +114,13 @@ class _AddCustomerListState extends State<AddCustomerList> {
     setState(() => _isLoading = false);
   }
 
+  final controller = Get.put(CustomerController());
+
+  List<CustomerModel> customerModel = [];
   @override
   void initState() {
     super.initState();
+
 
     /// set headers
     _headers = [
@@ -193,7 +202,7 @@ class _AddCustomerListState extends State<AddCustomerList> {
           textAlign: TextAlign.center),
     ];
 
-    _initializeData();
+    _initializeData("SELECT * FROM customer");
   }
 
   @override
@@ -250,17 +259,22 @@ class _AddCustomerListState extends State<AddCustomerList> {
                   if (_isSearch)
                     Expanded(
                         child: TextField(
+                          onChanged: (value){
+                            _filterData(value);
+                          },
+                          controller: controller.searchTextController,
                       decoration: InputDecoration(
                           hintText:
-                              'Enter search term based on ${_searchKey.replaceAll(RegExp('[\\W_]+'), ' ').toUpperCase()}',
+                              'Enter search by ${_searchKey.replaceAll(RegExp('[\\W_]+'), ' ').toUpperCase()}',
                           prefixIcon: IconButton(
                               icon: const Icon(Icons.cancel),
                               onPressed: () {
                                 setState(() {
                                   _isSearch = false;
                                 });
-                                _initializeData();
+                                _initializeData("SELECT * FROM customer");
                               }),
+
                           suffixIcon: IconButton(
                               icon: const Icon(Icons.search),
                               onPressed: () {})),

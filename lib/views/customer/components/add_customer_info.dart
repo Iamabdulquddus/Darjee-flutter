@@ -1,14 +1,19 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../../constants/style.dart';
+import '../../../controller/customer_controller.dart';
 import '../../../responsive.dart';
 import '../../../widgets/date_picker.dart';
 import '../../../widgets/dropdown.dart';
 import '../../../widgets/pick_image.dart';
 import '../../../widgets/textformfeild.dart';
+import 'package:get/get.dart';
+
 
 class AddCustomerInfo extends StatelessWidget {
-  const AddCustomerInfo({Key? key}) : super(key: key);
+  AddCustomerInfo({Key? key}) : super(key: key);
+  final controller = Get.put(CustomerController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +128,7 @@ class AddCustomerInfo extends StatelessWidget {
                                   ),
                                   CustomDropdown(
                                     dropDownTitle: 'Select gender',
-                                    dropDownItemList: ['male', 'female'], title: 'Gender',
+                                    dropDownItemList: ['male', 'female',"other"], title: 'Gender',
                                   ),
                                 ],
                               ),

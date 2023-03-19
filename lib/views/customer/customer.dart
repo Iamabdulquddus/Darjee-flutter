@@ -18,7 +18,7 @@ class Customer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    conn();
+
     return Scaffold(
       backgroundColor: snowBackground,
       body: WidgetWithSidebar(
@@ -32,7 +32,5 @@ class Customer extends StatelessWidget {
     );
   }
 
-  Future<void> conn() async {
-    controller.customerDetails();
-  }
+
 }
