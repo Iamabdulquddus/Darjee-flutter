@@ -25,6 +25,7 @@ dependencies:
   flutter_spinkit: ^5.1.0
   animated_text_kit: ^4.2.2
   mysql1: ^0.20.0
+  mysql: ^0.0.1
 
 
 dev_dependencies:

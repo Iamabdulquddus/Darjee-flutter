@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:mysql1/mysql1.dart';
 
 class Connect {
@@ -7,15 +9,19 @@ class Connect {
 
   Future<MySqlConnection> get connection async {
     var settings = ConnectionSettings(
-        host: '192.168.1.6',
+        // host: '192.168.1.5',
+        host: '182.188.68.89',
         port: 3306,
-        user: 'User@1',
-        password: 'User@1',
-        db: 'new_darjee'
+        // user: 'User@1',
+        user: 'devcrew_darjeeonline',
+        // password: 'User@1',
+        password: 'FEVORqJC?M#q',
+        // db: 'new_darjee'
+        db: 'devcrew_final_darjee'
     );
+    // return await MySqlConnection.connect(settings);
     return await MySqlConnection.connect(settings);
   }
-
 
 
   static fetchDetails(String query) async {
